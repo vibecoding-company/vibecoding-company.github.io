@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vibecoding Company</title>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="alternate" hreflang="az" href="../az/">
+<link rel="alternate" hreflang="be" href="../be/">
+<link rel="alternate" hreflang="bg" href="../bg/">
+<link rel="alternate" hreflang="cs" href="../cs/">
+<link rel="alternate" hreflang="da" href="../da/">
+<link rel="alternate" hreflang="de" href="../de/">
+<link rel="alternate" hreflang="el" href="../el/">
+<link rel="alternate" hreflang="en" href="../en/">
+<link rel="alternate" hreflang="es" href="../es/">
+<link rel="alternate" hreflang="et" href="../et/">
+<link rel="alternate" hreflang="fi" href="../fi/">
+<link rel="alternate" hreflang="fr" href="../fr/">
+<link rel="alternate" hreflang="ga" href="../ga/">
+<link rel="alternate" hreflang="hr" href="../hr/">
+<link rel="alternate" hreflang="hu" href="../hu/">
+<link rel="alternate" hreflang="hy" href="../hy/">
+<link rel="alternate" hreflang="is" href="../is/">
+<link rel="alternate" hreflang="it" href="../it/">
+<link rel="alternate" hreflang="ja" href="../ja/">
+<link rel="alternate" hreflang="ka" href="../ka/">
+<link rel="alternate" hreflang="kk" href="../kk/">
+<link rel="alternate" hreflang="ko" href="../ko/">
+<link rel="alternate" hreflang="ky" href="../ky/">
+<link rel="alternate" hreflang="lb" href="../lb/">
+<link rel="alternate" hreflang="lt" href="../lt/">
+<link rel="alternate" hreflang="lv" href="../lv/">
+<link rel="alternate" hreflang="cnr" href="../me/">
+<link rel="alternate" hreflang="mk" href="../mk/">
+<link rel="alternate" hreflang="mt" href="../mt/">
+<link rel="alternate" hreflang="nl" href="../nl/">
+<link rel="alternate" hreflang="no" href="../no/">
+<link rel="alternate" hreflang="pl" href="../pl/">
+<link rel="alternate" hreflang="pt" href="../pt/">
+<link rel="alternate" hreflang="ro" href="../ro/">
+<link rel="alternate" hreflang="ru" href="../ru/">
+<link rel="alternate" hreflang="sk" href="../sk/">
+<link rel="alternate" hreflang="sl" href="../sl/">
+<link rel="alternate" hreflang="sq" href="../sq/">
+<link rel="alternate" hreflang="sv" href="../sv/">
+<link rel="alternate" hreflang="tg" href="../tg/">
+<link rel="alternate" hreflang="tk" href="../tk/">
+<link rel="alternate" hreflang="tr" href="../tr/">
+<link rel="alternate" hreflang="uk" href="../uk/">
+<link rel="alternate" hreflang="uz" href="../uz/">
+<link rel="alternate" hreflang="zh" href="../zh/">
+<link rel="stylesheet" href="../brand/tokens.css">
+<link rel="stylesheet" href="../brand/vibe-ui.css">
+<style>
+:root{--bar-h:0px}
+.pv-bar{position:sticky;top:env(safe-area-inset-top, 0px);z-index:30;height:var(--bar-h);background:var(--paper-raised);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:31;background:var(--paper-raised)}
+.pv-bar__in{box-sizing:border-box;max-width:var(--content-wide);height:100%;margin:0 auto;display:flex;align-items:center;gap:var(--space-4);padding:0 var(--space-6)}
+.pv-title{display:flex;align-items:center;gap:var(--space-2);margin:0;color:var(--ink);white-space:nowrap}
+.pv-title span{color:var(--ink-muted)}
+.pv-seg{display:inline-flex;padding:2px;border:1px solid var(--line-strong);border-radius:var(--radius-sm);background:var(--paper)}
+.pv-seg button{height:28px;padding:0 var(--space-3);border:0;border-radius:var(--radius-xs);background:transparent;color:var(--ink-muted);font-family:var(--font-sans);cursor:pointer;transition:background-color 120ms cubic-bezier(0.2,0,0,1)}
+.pv-seg button:hover{background:var(--wash)}
+.pv-seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent)}
+.pv-seg button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.pv-spacer{flex:1}
+.pv-stage[data-device="phone"]{background:var(--paper-sunken);padding:var(--space-8) var(--space-4) var(--space-16)}
+.pv-stage[data-device="phone"] .site{width:390px;max-width:100%;margin:0 auto;border:1px solid var(--line-strong);border-radius:var(--radius-lg);overflow:clip;box-shadow:var(--shadow-lg)}
+@media (max-width:640px){.pv-title span{display:none}.pv-bar__in{padding:0 var(--space-4);gap:var(--space-2)}.pv-guide .vc-btn__label{display:none}.pv-bar .pv-lang{max-width:116px}}
+@media (max-width:520px){.pv-title{display:none}.pv-bar .pv-lang{max-width:96px}.pv-seg button{padding:0 var(--space-2)}.pv-guide{padding:0 var(--space-2)}}
+
+.site{container:site/inline-size;background:var(--paper);color:var(--ink);font-family:var(--font-sans)}
+.gs-nav{position:sticky;top:calc(var(--bar-h) + env(safe-area-inset-top, 0px));z-index:20;display:flex;align-items:center;gap:var(--space-6);min-height:64px;padding:0 var(--space-6);background:var(--paper);border-bottom:1px solid var(--line)}
+.gs-brand{display:flex;align-items:center;gap:var(--space-3);color:var(--ink);text-decoration:none}
+.gs-brand img{display:block;width:40px;height:40px}
+.gs-links{display:flex;gap:var(--space-1);margin-left:auto}
+.gs-links a{position:relative;display:flex;align-items:center;height:64px;padding:0 var(--space-3);color:var(--ink);text-decoration:none}
+.gs-links a:hover{color:var(--accent)}
+.gs-links a[aria-current="page"]{color:var(--accent)}
+.gs-links a[aria-current="page"]::after{content:"";position:absolute;left:var(--space-3);right:var(--space-3);bottom:0;height:3px;border-radius:var(--radius-xs) var(--radius-xs) 0 0;background:var(--accent)}
+.gs-links a:focus-visible,.gs-brand:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.gs-burger{display:none}
+
+.gs-sec{scroll-margin-top:128px;background:var(--paper);color:var(--ink);padding:var(--space-16) var(--space-6)}
+.gs-sec--2{background:var(--paper-sunken)}
+.gs-wrap{max-width:var(--content-wide);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)}
+.gs-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);align-items:start}
+.gs-col{grid-column:span var(--span);display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-6);min-width:0}
+.gs-col>*{max-width:100%}
+.gs-text{width:100%}
+.gs-title{margin:0;font-family:var(--font-serif);font-weight:400;font-size:53px;line-height:1.1;letter-spacing:-0.02em;text-wrap:balance}
+.gs-heading{margin:0;font-family:var(--font-serif);font-weight:500;font-size:32px;line-height:1.2;letter-spacing:-0.01em;text-wrap:balance}
+.gs-subheading{margin:0;font-family:var(--font-serif);font-weight:500;font-size:24px;line-height:1.25;letter-spacing:-0.005em}
+.gs-normal{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.5}
+.gs-small{margin:0;font-family:var(--font-mono);font-weight:500;font-size:13.3px;line-height:1.5;color:var(--ink-muted)}
+.gs-text>*+*{margin-top:var(--space-3)}
+.gs-text>.gs-small+*{margin-top:var(--space-2)}
+.gs-text>*+.gs-small{margin-top:var(--space-6)}
+.gs-text>.gs-title+*{margin-top:var(--space-5)}
+.gs-text>.gs-heading+.gs-normal{margin-top:var(--space-4)}
+.gs-list{padding-left:1.4em}
+.gs-list li+li{margin-top:var(--space-2)}
+.gs-text a{color:var(--link);text-underline-offset:3px}
+.gs-title em,.gs-heading em{font-style:italic}
+.tilde{color:var(--accent)}
+mark.ph{border-radius:var(--radius-xs);padding:0 2px;background:var(--amber-soft);color:var(--ink)}
+
+.gs-btn{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;height:var(--control-md);padding:0 var(--space-6);border:1px solid var(--accent);border-radius:var(--radius-sm);background:transparent;color:var(--accent);text-decoration:none;transition:background-color 120ms cubic-bezier(0.2,0,0,1)}
+.gs-btn--filled{background:var(--accent);color:var(--on-accent)}
+.gs-btn--filled:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+.gs-btn--outlined:hover{background:var(--accent-soft)}
+.gs-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+
+.gs-embed{width:100%}
+.gs-embed iframe{display:block;width:100%;height:calc(var(--h) * 1px);border:0;background:transparent}
+.gs-image{display:block;width:100%;height:auto}
+.gs-divider{width:100%;margin:0;border:0;border-top:1px solid var(--line)}
+
+.gs-faq{width:100%;border-top:1px solid var(--line)}
+.gs-faq details{border-bottom:1px solid var(--line)}
+.gs-faq summary{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);padding:var(--space-4) 0;cursor:pointer;list-style:none;font-family:var(--font-serif);font-weight:500;font-size:20px;line-height:1.3}
+.gs-faq summary::-webkit-details-marker{display:none}
+.gs-faq summary .vc-icon{flex:none;color:var(--ink-muted);transition:transform 200ms cubic-bezier(0.2,0,0,1)}
+.gs-faq details[open] summary .vc-icon{transform:rotate(180deg)}
+.gs-faq summary:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.gs-faq details p{padding-bottom:var(--space-4);color:var(--ink-muted)}
+
+.gs-form{width:100%;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--paper-raised);overflow:hidden}
+.gs-form__label{margin:0;padding:var(--space-2) var(--space-4);border-bottom:1px solid var(--line);color:var(--ink-muted)}
+.gs-form img{display:block;width:100%;height:auto}
+.gs-form__body{display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-5)}
+.gs-form__head,.gs-form__q{padding:var(--space-5);border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--paper)}
+.gs-form__head{border-top:6px solid var(--accent)}
+.gs-form__title{margin:0 0 var(--space-2);font-family:var(--font-serif);font-size:28px;line-height:1.2}
+.gs-form__star{color:var(--brick)}
+.gs-form__help{margin:var(--space-1) 0 0;color:var(--ink-muted);font-size:13px;line-height:1.5}
+.gs-form__line{display:block;width:60%;height:28px;margin-top:var(--space-2);border-bottom:1px solid var(--line-strong)}
+.gs-form__line--tall{width:100%;height:48px}
+.gs-form__opts{margin:var(--space-3) 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--space-2)}
+.gs-form__opts li{display:flex;align-items:center;gap:var(--space-3);font-size:14px;line-height:1.4}
+.gs-form__radio,.gs-form__check{flex:none;width:16px;height:16px;border:2px solid var(--ink-muted)}
+.gs-form__radio{border-radius:var(--radius-full)}
+.gs-form__check{border-radius:3px}
+.gs-form__submit{align-self:flex-start;display:inline-flex;align-items:center;height:var(--control-md);padding:0 var(--space-6);border-radius:var(--radius-sm);background:var(--accent);color:var(--on-accent)}
+
+.gs-footer{padding:var(--space-12) var(--space-6);border-top:1px solid var(--line);background:var(--paper-sunken)}
+.gs-footer .gs-text{max-width:var(--content-wide);margin:0 auto}
+.gs-footer .gs-text>*+*{margin-top:var(--space-2)}
+.gs-langs a{color:var(--ink-muted);text-decoration:none;white-space:nowrap}
+.gs-langs a:hover{color:var(--link);text-decoration:underline}
+.gs-langs a[aria-current]{color:var(--ink)}
+.gs-lang{flex:none}.pv-lang{height:32px;max-width:180px;padding:0 var(--space-2);border:1px solid var(--line-strong);border-radius:var(--radius-sm);background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:14px}
+.pv-lang:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+
+@container site (max-width:760px){
+  .gs-nav{gap:var(--space-2);padding:0 var(--space-2)}
+  .gs-brand img{width:32px;height:32px}
+  .gs-burger{display:inline-flex}
+  .gs-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;padding:var(--space-2);border-bottom:1px solid var(--line);background:var(--paper-raised);box-shadow:var(--shadow-lg)}
+  .gs-nav[data-open] .gs-links{display:flex}
+  .gs-links a{height:var(--control-lg)}
+  .gs-links a[aria-current="page"]::after{top:var(--space-3);bottom:var(--space-3);left:0;right:auto;width:3px;height:auto;border-radius:0 var(--radius-xs) var(--radius-xs) 0}
+  .gs-sec{padding:var(--space-12) var(--space-4)}
+  .gs-wrap{gap:var(--space-6)}
+  .gs-row{grid-template-columns:minmax(0,1fr)}
+  .gs-col{grid-column:auto}
+  .gs-embed iframe{height:auto;aspect-ratio:var(--w) / var(--h)}
+  .gs-footer{padding:var(--space-8) var(--space-4)}
+}
+</style>
+</head>
+<body>
+<div class="pv-stage" data-device="desktop">
+<div class="site" data-theme="light" lang="cnr">
+<header class="gs-nav">
+  <button type="button" class="gs-burger vc-btn vc-btn--ghost vc-btn--icon" aria-label="Меню" aria-expanded="false"><svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+  <a class="gs-brand vc-type-body" href="#/home"><img src="../images/logo-mark.png" alt="" width="40" height="40">Vibecoding Company</a>
+  <nav class="gs-links vc-type-body" aria-label="Страницы сайта"><a href="#/home" data-page="home">Početna</a><a href="#/services" data-page="services">Usluge</a><a href="#/process" data-page="process">Kako radimo</a><a href="#/brief" data-page="brief">Upit</a></nav>
+  <select class="pv-lang gs-lang" aria-label="Язык сайта"><option value="en">English</option><option value="az">Azərbaycanca</option><option value="cs">Čeština</option><option value="me" selected>Crnogorski</option><option value="da">Dansk</option><option value="de">Deutsch</option><option value="et">Eesti</option><option value="es">Español</option><option value="fr">Français</option><option value="ga">Gaeilge</option><option value="hr">Hrvatski</option><option value="is">Íslenska</option><option value="it">Italiano</option><option value="lv">Latviešu</option><option value="lt">Lietuvių</option><option value="lb">Lëtzebuergesch</option><option value="hu">Magyar</option><option value="mt">Malti</option><option value="nl">Nederlands</option><option value="no">Norsk</option><option value="uz">Oʻzbekcha</option><option value="pl">Polski</option><option value="pt">Português</option><option value="ro">Română</option><option value="sq">Shqip</option><option value="sk">Slovenčina</option><option value="sl">Slovenščina</option><option value="fi">Suomi</option><option value="sv">Svenska</option><option value="tr">Türkçe</option><option value="tk">Türkmençe</option><option value="el">Ελληνικά</option><option value="be">Беларуская</option><option value="bg">Български</option><option value="kk">Қазақша</option><option value="ky">Кыргызча</option><option value="mk">Македонски</option><option value="ru">Русский</option><option value="tg">Тоҷикӣ</option><option value="uk">Українська</option><option value="hy">Հայերեն</option><option value="ka">ქართული</option><option value="zh">中文</option><option value="ja">日本語</option><option value="ko">한국어</option></select>
+</header>
+<main data-page="home" hidden><section class="gs-sec gs-sec--1" id="s-home-hero"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:7"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/vibecoding-za-kompanije</p><h1 class="gs-title">Opišite ideju <em>riječima</em>. Za 3 dana radi.</h1><p class="gs-normal">Digitalne proizvode pravimo zajedno sa Claudeom: kod piše Claude, a mi odgovaramo za smisao, kvalitet i izdanje. Prototip za 1–3 dana, cijena nakon upita.</p></div><a class="gs-btn gs-btn--outlined vc-type-label" href="#/services">Pogledajte usluge</a></div><div class="gs-col" style="--span:5"><div class="gs-embed" style="--w:470;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Поле запроса — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--accent-hover:#8c3a1a;--brick:#a32a33;--control-lg:48px;--control-md:40px;--control-sm:32px;--focus-ring:0 0 0 2px #f5f1e8,0 0 0 4px #a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--ink:#1e1c19;--ink-muted:#686258;--line-strong:#878074;--link:var(--accent);--on-accent:#fffbf5;--paper-raised:#fcfaf5;--radius-full:9999px;--radius-lg:20px;--radius-sm:8px;--shadow-md:0 2px 6px #1e1c190f,0 10px 28px -8px #1e1c1924;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px}.vc-icon{display: inline-block;flex: none;vertical-align: middle}.vc-btn{box-sizing: border-box;display: inline-flex;align-items: center;justify-content: center;gap: var(--space-2);height: var(--control-md);padding: 0 var(--space-4);margin: 0;border: 1px solid transparent;border-radius: var(--radius-sm);background: transparent;color: var(--ink);font-family: var(--font-sans);text-decoration: none;white-space: nowrap;cursor: pointer;user-select: none;-webkit-tap-highlight-color: transparent;transition: background-color 120ms cubic-bezier(0.2,0,0,1),border-color 120ms cubic-bezier(0.2,0,0,1),box-shadow 120ms cubic-bezier(0.2,0,0,1),transform 120ms cubic-bezier(0.2,0,0,1)}.vc-btn:focus-visible{outline: none;box-shadow: var(--focus-ring)}.vc-btn:active:not(:disabled):not([aria-disabled=&quot;true&quot;]){transform: translateY(1px)}.vc-btn--sm{height: var(--control-sm);padding: 0 var(--space-3);gap: var(--space-1)}.vc-btn--icon{padding: 0;width: var(--control-md)}.vc-btn--icon.vc-btn--sm{width: var(--control-sm)}.vc-btn--icon.vc-btn--lg{width: var(--control-lg)}.vc-btn--primary{background: var(--accent);color: var(--on-accent)}.vc-btn--primary:hover:not(:disabled):not([aria-disabled=&quot;true&quot;]){background: var(--accent-hover)}.vc-btn:disabled,.vc-btn[aria-disabled=&quot;true&quot;]{opacity: 0.45;cursor: not-allowed}.vc-prompt{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);padding: var(--space-4) var(--space-3) var(--space-3) var(--space-5);background: var(--paper-raised);border: 1px solid var(--line-strong);border-radius: var(--radius-lg);box-shadow: var(--shadow-md);color: var(--ink);font-family: var(--font-sans);transition: border-color 120ms cubic-bezier(0.2,0,0,1),box-shadow 200ms cubic-bezier(0.2,0,0,1)}.vc-prompt:has(.vc-prompt__input:focus){border-color: var(--accent);box-shadow: var(--focus-ring),var(--shadow-md)}.vc-prompt__row{display: flex;align-items: flex-start;gap: var(--space-3);padding-right: var(--space-2)}.vc-prompt__tilde{flex: none;display: flex;align-items: center;height: 1lh;color: var(--accent)}.vc-prompt__input{flex: 1;min-width: 0;margin: 0;padding: 0;border: 0;outline: none;resize: none;overflow-y: hidden;background: transparent;color: var(--ink);font-family: var(--font-sans)}.vc-prompt__input::placeholder{color: var(--ink-muted);opacity: 1}.vc-prompt__bar{display: flex;align-items: center;gap: var(--space-2);min-height: var(--control-sm)}.vc-prompt__tools{display: flex;align-items: center;gap: var(--space-1);margin-left: calc(var(--space-2) * -1)}.vc-prompt__spacer{flex: 1}.vc-prompt__hint{color: var(--ink-muted);white-space: nowrap;overflow: hidden;text-overflow: ellipsis;min-width: 0}.vc-prompt__status{display: inline-flex;align-items: center;gap: 2px;color: var(--ink-muted)}.vc-prompt__send{flex: none;border-radius: var(--radius-full)}.vc-prompt__stop{display: block;width: 10px;height: 10px;border-radius: 2px;background: currentColor}.vc-prompt--disabled{opacity: 0.45}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-body-sm{font-family: var(--font-sans);font-size: 14px;line-height: 20px;font-weight: 400}.vc-type-label{font-family: var(--font-sans);font-size: 14px;line-height: 20px;font-weight: 500}.vc-type-code-sm{font-family: var(--font-mono);font-size: 12px;line-height: 18px;font-weight: 400}.wrap{flex:1 1 auto;display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-2) var(--space-4) var(--space-4)}.vc-prompt{flex:1 1 auto;min-height:0;margin:0}.vc-prompt__row{flex:1 1 auto;align-items:stretch;min-height:0}.vc-prompt__tilde{align-self:flex-start}.vc-prompt__input{align-self:stretch;min-height:48px;overflow-y:auto}.note{margin:0;color:var(--ink-muted)}.note a{color:var(--link)}.note--error{color:var(--brick)}@media (max-width:420px){.vc-prompt__hint{display:none}}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+  &lt;form class=&quot;vc-prompt&quot; id=&quot;prompt&quot; autocomplete=&quot;off&quot;&gt;
+    &lt;div class=&quot;vc-prompt__row&quot;&gt;
+      &lt;span class=&quot;vc-prompt__tilde vc-type-body&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg class=&quot;vc-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.25&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M4 12a4.4 4.4 0 0 1 8 0 4.4 4.4 0 0 0 8 0&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+      &lt;textarea class=&quot;vc-prompt__input vc-type-body&quot; rows=&quot;2&quot; maxlength=&quot;1500&quot; placeholder=&quot;Na primjer: zakazivanje sa onlajn plaćanjem&quot; aria-label=&quot;Opišite zadatak&quot;&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;vc-prompt__bar&quot;&gt;
+      &lt;div class=&quot;vc-prompt__spacer&quot;&gt;&lt;/div&gt;
+      &lt;span class=&quot;vc-prompt__hint vc-type-code-sm&quot;&gt;Enter — pošalji · ⇧Enter — novi red&lt;/span&gt;
+      &lt;button type=&quot;submit&quot; class=&quot;vc-btn vc-btn--primary vc-btn--sm vc-btn--icon vc-type-label vc-prompt__send&quot; aria-label=&quot;Pošalji&quot; disabled&gt;&lt;svg class=&quot;vc-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.75&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M12 19.5V4.5&quot;/&gt;&lt;path d=&quot;M5.5 11 12 4.5 18.5 11&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+  &lt;p class=&quot;note vc-type-body-sm&quot; id=&quot;note&quot; role=&quot;status&quot;&gt;Otvorićemo upit sa vašim tekstom u novom tabu. Odgovaramo u roku od jednog radnog dana.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=470,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+// Ссылка на бриф: Google Форма с ответом TASK в первом вопросе (шаг 4 инструкции).
+var BRIEF_LINK = '__BRIEF_LINK__';
+(function(){
+var T={&quot;noLink&quot;:&quot;Upit još nije povezan: ubacite link ka formularu u kod bloka.&quot;,&quot;ok&quot;:&quot;Upit je otvoren u novom tabu — dopišite kontakt i odgovorićemo u roku od jednog radnog dana.&quot;,&quot;blocked&quot;:&quot;Pretraživač nije otvorio tab.&quot;,&quot;open&quot;:&quot;Otvori upit&quot;};
+var form=document.getElementById('prompt'),input=form.querySelector('textarea'),send=form.querySelector('button'),note=document.getElementById('note');
+function sync(){send.disabled=!input.value.trim()}
+function say(html,error){note.innerHTML=html;note.classList.toggle('note--error',!!error);if(window.vcFit)window.vcFit()}
+function submit(){
+  var text=input.value.trim();if(!text)return;
+  if(!/^https:\/\//.test(BRIEF_LINK)||!/=TASK(&amp;|#|$)/.test(BRIEF_LINK)){say(T.noLink,true);return}
+  var url=BRIEF_LINK.replace(/=TASK(?=&amp;|#|$)/,'='+encodeURIComponent(text));
+  var w=window.open(url,'_blank');
+  if(w){try{w.opener=null}catch(e){}input.value='';sync();say(T.ok)}
+  else say(T.blocked+' &lt;a href=&quot;'+url.replace(/&quot;/g,'&amp;quot;')+'&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;'+T.open+'&lt;/a&gt;');
+}
+input.addEventListener('input',sync);
+input.addEventListener('keydown',function(e){if(e.key==='Enter'&amp;&amp;!e.shiftKey&amp;&amp;!e.isComposing){e.preventDefault();submit()}});
+form.addEventListener('submit',function(e){e.preventDefault();submit()});
+sync();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Поле запроса" loading="lazy"></iframe></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-home-languages"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:12"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/jezici</p><p class="gs-small gs-langs"><a href="../en/" hreflang="en" lang="en">English</a> · <a href="../az/" hreflang="az" lang="az">Azərbaycanca</a> · <a href="../cs/" hreflang="cs" lang="cs">Čeština</a> · <a href="../me/" hreflang="cnr" lang="cnr" aria-current="true">Crnogorski</a> · <a href="../da/" hreflang="da" lang="da">Dansk</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../et/" hreflang="et" lang="et">Eesti</a> · <a href="../es/" hreflang="es" lang="es">Español</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../ga/" hreflang="ga" lang="ga">Gaeilge</a> · <a href="../hr/" hreflang="hr" lang="hr">Hrvatski</a> · <a href="../is/" hreflang="is" lang="is">Íslenska</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../lv/" hreflang="lv" lang="lv">Latviešu</a> · <a href="../lt/" hreflang="lt" lang="lt">Lietuvių</a> · <a href="../lb/" hreflang="lb" lang="lb">Lëtzebuergesch</a> · <a href="../hu/" hreflang="hu" lang="hu">Magyar</a> · <a href="../mt/" hreflang="mt" lang="mt">Malti</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../no/" hreflang="nb" lang="nb">Norsk</a> · <a href="../uz/" hreflang="uz" lang="uz">Oʻzbekcha</a> · <a href="../pl/" hreflang="pl" lang="pl">Polski</a> · <a href="../pt/" hreflang="pt" lang="pt">Português</a> · <a href="../ro/" hreflang="ro" lang="ro">Română</a> · <a href="../sq/" hreflang="sq" lang="sq">Shqip</a> · <a href="../sk/" hreflang="sk" lang="sk">Slovenčina</a> · <a href="../sl/" hreflang="sl" lang="sl">Slovenščina</a> · <a href="../fi/" hreflang="fi" lang="fi">Suomi</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../tr/" hreflang="tr" lang="tr">Türkçe</a> · <a href="../tk/" hreflang="tk" lang="tk">Türkmençe</a> · <a href="../el/" hreflang="el" lang="el">Ελληνικά</a> · <a href="../be/" hreflang="be" lang="be">Беларуская</a> · <a href="../bg/" hreflang="bg" lang="bg">Български</a> · <a href="../kk/" hreflang="kk" lang="kk">Қазақша</a> · <a href="../ky/" hreflang="ky" lang="ky">Кыргызча</a> · <a href="../mk/" hreflang="mk" lang="mk">Македонски</a> · <a href="../ru/" hreflang="ru" lang="ru">Русский</a> · <a href="../tg/" hreflang="tg" lang="tg">Тоҷикӣ</a> · <a href="../uk/" hreflang="uk" lang="uk">Українська</a> · <a href="../hy/" hreflang="hy" lang="hy">Հայերեն</a> · <a href="../ka/" hreflang="ka" lang="ka">ქართული</a> · <a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a></p></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-home-numbers"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:12"><hr class="gs-divider"></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-text"><h2 class="gs-heading">1–3 dana</h2><p class="gs-normal">od upita do prototipa koji radi</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h2 class="gs-heading">1–5 ljudi</h2><p class="gs-normal">u timu projekta: proizvod, dizajn i inženjer</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h2 class="gs-heading">5–10 MVP-ova</h2><p class="gs-normal">mjesečno — da hipoteze provjeravate u paketima, a ne jednu po jednu</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-home-services"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/usluge</p><h2 class="gs-heading">Šta radimo</h2><p class="gs-normal">Četiri oblasti — od prvog prototipa do prvih klijenata. Počnite od bilo koje: tačan pravac biramo na upitu.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:3"><div class="gs-embed" style="--w:270;--h:320"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Карточка «Прототипы и MVP» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/prototipovi&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Prototipovi i MVP&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Veb-servisi, botovi, dodaci i SaaS za konkretan zadatak. Provjeravamo hipotezu prije nego što zaposlite tim.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Prototip — 1–3 dana&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=270,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Карточка «Прототипы и MVP»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:3"><div class="gs-embed" style="--w:270;--h:320"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Карточка «ИИ-агенты и аудит кода» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/agenti&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;AI agenti i revizija koda&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Podešavamo agente koji pišu, testiraju i objavljuju kod — i pazimo da ne postane špageti.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Revizija — od 3 dana&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=270,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Карточка «ИИ-агенты и аудит кода»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:3"><div class="gs-embed" style="--w:270;--h:320"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Карточка «Продуктовый дизайн» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/dizajn&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Produktni dizajn&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Pronalazimo problem korisnika, pišemo precizan zadatak za AI i dovodimo interfejs do vašeg stila.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Interfejs — 2–5 dana&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=270,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Карточка «Продуктовый дизайн»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:3"><div class="gs-embed" style="--w:270;--h:320"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Карточка «Запуск и рост» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/rast&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Lansiranje i rast&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Landing stranica, SEO, zajednice i prvi korisnici. Proizvod nije dovoljno napisati — treba ga prodati.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Lansiranje — od 1 sedmice&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=270,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Карточка «Запуск и рост»" loading="lazy"></iframe></div></div></div><div class="gs-row"><div class="gs-col" style="--span:12"><a class="gs-btn gs-btn--outlined vc-type-label" href="#/services">Sve usluge</a></div></div></div></section><section class="gs-sec gs-sec--1" id="s-home-clients"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/klijenti</p><h2 class="gs-heading">Za koje kompanije</h2><p class="gs-normal">Veličina kompanije nije bitna. Bitan je zadatak koji treba provjeriti ili automatizovati.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Startapi</h3><p class="gs-normal">Provjeriti ideju prije zapošljavanja tima ili zatvaranja runde: 5–10 hipoteza mjesečno umjesto jedne za pola godine.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Mala i srednja preduzeća</h3><p class="gs-normal">Riješiti se ručne rutine: zakazivanja, porudžbine, knjigovodstvo i izvještaji. Alat se prilagođava vašem procesu, a ne obrnuto.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Korporacije</h3><p class="gs-normal">Provjeriti hipotezu bez opterećivanja glavnog IT-a. Interni alati za nekoliko dana, uz pregled i testove.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Agencije i studiji</h3><p class="gs-normal">Napraviti prototip za vašeg klijenta do sastanka — ponekad i tokom pregovora.</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-home-compare"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/poređenje</p><h2 class="gs-heading">Po čemu se razlikujemo od klasičnog razvoja</h2></div></div></div><div class="gs-row"><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Tim</h3><p class="gs-small">Klasična IT kompanija</p><p class="gs-normal">Desetine i stotine programera, QA i PM</p><p class="gs-small">Vibecoding Company</p><p class="gs-normal">1–5 ljudi: generalisti i produkt menadžeri</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Brzina izdanja</h3><p class="gs-small">Klasična IT kompanija</p><p class="gs-normal">MVP za 2–6 mjeseci</p><p class="gs-small">Vibecoding Company</p><p class="gs-normal">MVP za nekoliko sati do 3 dana</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Ključna vještina</h3><p class="gs-small">Klasična IT kompanija</p><p class="gs-normal">Sintaksa jezika i algoritmi</p><p class="gs-small">Vibecoding Company</p><p class="gs-normal">Sistemsko razmišljanje, ukus i produktna vizija</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Cijena greške</h3><p class="gs-small">Klasična IT kompanija</p><p class="gs-normal">Mjeseci plaćenog rada tima</p><p class="gs-small">Vibecoding Company</p><p class="gs-normal">Nekoliko sati i par dolara za API tokene</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-normal">Brzina ne ukida inženjerstvo: svaku promjenu čita čovjek, a ključni scenariji su pokriveni testovima. <a href="#/process">Kako provjeravamo kod</a></p></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-home-process"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/proces</p><h2 class="gs-heading">Čovjek odlučuje, Claude piše</h2><p class="gs-normal">Namjera i ukus su na vama i na nama, nacrt koda na Claudeu, kvalitet i izdanje opet na ljudima.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:3"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/upit</p><h3 class="gs-subheading">Vi opisujete zadatak</h3><p class="gs-normal">Riječima, kao kolegi. Može i glasovnom porukom ili snimkom ekrana. Upit traje 15 minuta.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/kod</p><h3 class="gs-subheading">Claude piše kod</h3><p class="gs-normal">Mi postavljamo zadatak i usmjeravamo. Prototip je gotov za 1–3 dana.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/pregled</p><h3 class="gs-subheading">Mi provjeravamo</h3><p class="gs-normal">Čitamo svaku promjenu, pokrećemo testove i tražimo ranjivosti.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/izdanje</p><h3 class="gs-subheading">Mi objavljujemo</h3><p class="gs-normal">Objavljujemo proizvod i predajemo vam kod, pristupe i uputstvo.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:12"><a class="gs-btn gs-btn--outlined vc-type-label" href="#/process">Pogledajte proces</a></div></div></div></section><section class="gs-sec gs-sec--2" id="s-home-examples"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/primjeri</p><h2 class="gs-heading">Koje zadatke preuzimamo</h2><p class="gs-normal">To su tipični zadaci, a ne projekti iz portfolija. Rokovi su okvirni za prototip.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Запись с оплатой онлайн» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/primjeri/salon&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Zakazivanje sa onlajn plaćanjem&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Bot na Telegramu: slobodni termini, avans karticom i podsjetnik sat ranije. Termini idu u Google tabele.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Prototip — 2 dana&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Запись с оплатой онлайн»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Калькулятор доставки» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/primjeri/logistika&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Kalkulator dostave za prodavce&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Formular računa tarifu po težini, dimenzijama i zoni za 10 sekundi — umjesto ručnog računanja u tabeli.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Prototip — 1 dan&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Калькулятор доставки»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Сводка отзывов» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/primjeri/marketplejs&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Jutarnji pregled recenzija&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Agent prikuplja recenzije, grupiše ih po temama i do 9:00 šalje pregled na Telegram.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Prototip — 1 dan&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Сводка отзывов»" loading="lazy"></iframe></div></div></div></div></section><section class="gs-sec gs-sec--3" id="s-home-cta" data-theme="dark"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:7"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/početak</p><h2 class="gs-heading">Od ideje do izdanja — na istoj talasnoj <em>dužini</em></h2><p class="gs-normal">Opišite zadatak — nakon upita šaljemo plan, rokove i cijenu.</p></div><a class="gs-btn gs-btn--filled vc-type-label" href="#/brief">Razgovarajmo o projektu</a></div><div class="gs-col" style="--span:5"><img class="gs-image" src="../images/brand-field.png" alt="Papirni nacrt prišiven uz kod i znak talas-kursor" width="1200" height="900" loading="lazy"></div></div></div></section></main>
+<main data-page="services" hidden><section class="gs-sec gs-sec--1" id="s-services-intro"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/usluge</p><h1 class="gs-title">Usluge i rokovi</h1><p class="gs-normal">Četiri oblasti — od prototipa do prvih klijenata. Cijenu računamo nakon upita: zavisi od obima, integracija i bezbjednosnih zahtjeva.</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-services-prototypes"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/prototipovi</p><h2 class="gs-heading">Prototipovi i MVP</h2><p class="gs-normal">Pravimo veb-servise, botove, dodatke i SaaS za konkretan problem tržišta. Cilj je provjeriti hipotezu na stvarnim korisnicima prije nego što uložite u razvoj.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Šta dobijate</h3><ul class="gs-normal gs-list"><li>Funkcionalan prototip na stvarnim podacima, a ne maketu</li><li>Kod u vašem repozitorijumu i uputstvo za pokretanje</li><li>Analitiku: šta korisnici rade i gdje odustaju</li><li>Plan dorade do produkcije</li></ul></div></div><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Formati i rokovi</h3><ul class="gs-normal gs-list"><li>Prototip — 1–3 dana</li><li>Serija hipoteza — 5–10 MVP-ova mjesečno</li><li>Alat za B2B klijenta — na sastanku ili dan nakon njega</li></ul><p class="gs-small">Cijena — nakon upita</p></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-services-agents"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/agenti</p><h2 class="gs-heading">AI agenti, pajplajni i revizija</h2><p class="gs-normal">Kod pišu neuronske mreže, pa je glavni posao upravljati njima. Podešavamo agente i pajplajne za vaš tim i pazimo da kod ostane razumljiv i skalabilan.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Šta dobijate</h3><ul class="gs-normal gs-list"><li>Lance agenata koji pišu, testiraju i objavljuju kod</li><li>Jedinstven pajplajn od Claude Code, Cursor, Replit ili GitHub Copilot</li><li>Pravila za agente: stil koda, testovi, pregled</li><li>Reviziju arhitekture: izvještaj o rizicima i plan ispravki</li></ul></div></div><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Formati i rokovi</h3><ul class="gs-normal gs-list"><li>Revizija koda — 3–5 dana</li><li>Podešavanje pajplajna — 1–2 sedmice</li><li>Obuka tima — 2 susreta po 2 sata</li></ul><p class="gs-small">Cijena — nakon upita</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-services-design"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/dizajn</p><h2 class="gs-heading">Produktni dizajn i UX/UI</h2><p class="gs-normal">Kad kod gotovo ništa ne košta, pobjeđuje proizvod koji se lakše koristi. Počinjemo od problema korisnika i završavamo interfejsom u vašem stilu.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Šta dobijate</h3><ul class="gs-normal gs-list"><li>Intervjue i analizu publike: šta boli i za šta plaćaju</li><li>Precizan zadatak za AI — bez „neka bude lijepo“</li><li>Interfejs u vašem stilu umjesto tipskih ekrana</li><li>Dizajn sistem: boje, fontovi, komponente</li></ul></div></div><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Formati i rokovi</h3><ul class="gs-normal gs-list"><li>Istraživanje — 2–3 dana</li><li>Interfejs prototipa — 2–5 dana</li></ul><p class="gs-small">Cijena — nakon upita</p></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-services-growth"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/rast</p><h2 class="gs-heading">Lansiranje, marketing i rast</h2><p class="gs-normal">Aplikaciju danas može napisati svako. Pobjeđuje onaj ko zna da je proda — zato lansiranje planiramo zajedno sa proizvodom.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Šta dobijate</h3><ul class="gs-normal gs-list"><li>Landing stranicu i levak: od prvog kontakta do upita</li><li>SEO i sadržaj za pretrage vaše publike</li><li>Rad sa zajednicama i prve korisnike</li><li>Priču i vizuelni stil proizvoda</li></ul></div></div><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Formati i rokovi</h3><ul class="gs-normal gs-list"><li>Landing stranica i analitika — 2–3 dana</li><li>Plan rasta — 1 sedmica</li><li>Podrška — mjesečno</li></ul><p class="gs-small">Cijena — nakon upita</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-services-examples"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/primjeri</p><h2 class="gs-heading">Primjeri zadataka</h2><p class="gs-normal">Tipični zadaci i rokovi prototipa. To nisu projekti iz portfolija — ovako izgleda rezultat prvih dana rada.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Запись с оплатой онлайн» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/primjeri/salon&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Zakazivanje sa onlajn plaćanjem&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Bot na Telegramu: slobodni termini, avans karticom i podsjetnik sat ranije. Termini idu u Google tabele.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Prototip — 2 dana&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Запись с оплатой онлайн»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Калькулятор доставки» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/primjeri/logistika&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Kalkulator dostave za prodavce&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Formular računa tarifu po težini, dimenzijama i zoni za 10 sekundi — umjesto ručnog računanja u tabeli.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Prototip — 1 dan&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Калькулятор доставки»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Сводка отзывов» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/primjeri/marketplejs&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Jutarnji pregled recenzija&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Agent prikuplja recenzije, grupiše ih po temama i do 9:00 šalje pregled na Telegram.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Prototip — 1 dan&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Сводка отзывов»" loading="lazy"></iframe></div></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Кабинет дилера» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/primjeri/veleprodaja&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Portal za distributere&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Zalihe, cijene i porudžbina jednim klikom. Povezivanje sa ERP-om dodajemo nakon prototipa.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Prototip — 3 dana&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Кабинет дилера»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Лендинг и лист ожидания» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/primjeri/lansiranje&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Landing stranica i lista čekanja&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Provjeravamo potražnju za novom uslugom: landing stranica, formular, analitika i prvi posjetioci iz zajednica.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Lansiranje — 1 sedmica&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Лендинг и лист ожидания»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Аудит кода» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/primjeri/revizija&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Revizija koda koji je napisao AI&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Analiziramo šta je napisao AI: arhitekturu, bezbjednost, testove. Izvještaj o rizicima i plan ispravki.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Izvještaj — 3–5 dana&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Аудит кода»" loading="lazy"></iframe></div></div></div></div></section><section class="gs-sec gs-sec--3" id="s-services-price" data-theme="dark"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/cijena</p><h2 class="gs-heading">Koliko košta</h2><p class="gs-normal">Cijenu računamo nakon upita. Na nju utiču tri stvari: obim posla, integracije (ERP, CRM, plaćanja) i bezbjednosni zahtjevi. Procjenu sa planom i rokovima šaljemo prije početka rada.</p></div><a class="gs-btn gs-btn--filled vc-type-label" href="#/brief">Razgovarajmo o projektu</a></div></div></div></section></main>
+<main data-page="process" hidden><section class="gs-sec gs-sec--1" id="s-process-intro"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/proces</p><h1 class="gs-title">Kako radimo</h1><p class="gs-normal">Čovjek odlučuje, Claude piše. Namjera i ukus su na vama i na nama, nacrt koda na Claudeu, kvalitet i izdanje opet na ljudima.</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-process-steps"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:7"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/upit · 15–30 minuta</p><h3 class="gs-subheading">Vi opisujete zadatak</h3><p class="gs-normal">Riječima — kao kolegi. Može i glasovnom porukom, snimkom ekrana ili linkom ka konkurentu. Produkt menadžer postavlja pitanja i bilježi šta znači „gotovo“.</p><p class="gs-small"><span class="tilde">~</span>/kod · 1–3 dana</p><h3 class="gs-subheading">Claude piše kod, mi usmjeravamo</h3><p class="gs-normal">Dijelimo zadatak na korake, pišemo uputstva za agente i sklapamo prototip. Napredak se vidi svaki dan.</p><p class="gs-small"><span class="tilde">~</span>/pregled · u istih 1–3 dana</p><h3 class="gs-subheading">Mi provjeravamo</h3><p class="gs-normal">Inženjer čita svaku promjenu, piše testove za ključne scenarije i provjerava zavisnosti, tajne i prava pristupa.</p><p class="gs-small"><span class="tilde">~</span>/izdanje · 1 dan</p><h3 class="gs-subheading">Mi objavljujemo</h3><p class="gs-normal">Postavljamo na vaš server ili u oblak i predajemo repozitorijum, pristupe i uputstvo. Dalje — podrška ili sljedeća hipoteza.</p></div></div><div class="gs-col" style="--span:5"><div class="gs-embed" style="--w:470;--h:330"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;cnr&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Блок кода «Конвейер» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--amber:#85570f;--control-md:40px;--dusk:#3c628f;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--moss:#4e6b39;--paper-sunken:#ede7db;--radius-md:12px;--space-1:4px;--space-3:12px;--space-4:16px}.vc-code{box-sizing: border-box;min-width: 0;margin: 0;overflow: hidden;background: var(--paper-sunken);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink)}.vc-code__head{display: flex;align-items: center;gap: var(--space-3);min-height: var(--control-md);padding: 0 var(--space-1) 0 var(--space-4);border-bottom: 1px solid var(--line)}.vc-code__file{flex: 1;min-width: 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;color: var(--ink-muted)}.vc-code__lang{flex: none;color: var(--ink-muted)}.vc-code__copy{flex: none}.vc-code__body{display: flex}.vc-code__gutter{flex: none;margin: 0;padding: var(--space-4) 0 var(--space-4) var(--space-4);color: var(--ink-muted);text-align: right;user-select: none}.vc-code__pre{flex: 1;min-width: 0;margin: 0;padding: var(--space-4);overflow-x: auto;tab-size: 2;color: var(--ink)}.vc-code__pre:focus-visible{outline: 2px solid var(--accent);outline-offset: -2px}.vc-code__pre code{font: inherit}.vc-tok-kw{color: var(--accent)}.vc-tok-str{color: var(--moss)}.vc-tok-num{color: var(--amber)}.vc-tok-fn{color: var(--dusk)}.vc-tok-com{color: var(--ink-muted)}.vc-type-code{font-family: var(--font-mono);font-size: 14px;line-height: 22px;font-weight: 400}.vc-type-code-sm{font-family: var(--font-mono);font-size: 12px;line-height: 18px;font-weight: 400}.vc-code{flex:1 1 auto;display:flex;flex-direction:column}.vc-code__head{padding-right:var(--space-4)}.vc-code__body{flex:1 1 auto;min-height:0}.vc-code__pre{white-space:pre-wrap;overflow-wrap:anywhere}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;figure class=&quot;vc-code&quot;&gt;
+  &lt;figcaption class=&quot;vc-code__head&quot;&gt;&lt;span class=&quot;vc-code__file vc-type-code-sm&quot;&gt;~/projekti/zakazivanje-salon&lt;/span&gt;&lt;span class=&quot;vc-code__lang vc-type-code-sm&quot;&gt;bash&lt;/span&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;vc-code__body&quot;&gt;&lt;pre class=&quot;vc-code__pre vc-type-code&quot; tabindex=&quot;0&quot;&gt;&lt;code&gt;&lt;span class=&quot;vc-tok-com&quot;&gt;# upit → zadatak za agenta&lt;/span&gt;
+&lt;span class=&quot;vc-tok-kw&quot;&gt;claude&lt;/span&gt; &lt;span class=&quot;vc-tok-str&quot;&gt;&amp;quot;bot za zakazivanje sa avansom karticom&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;vc-tok-com&quot;&gt;# testovi — prije ljudskog pregleda&lt;/span&gt;
+&lt;span class=&quot;vc-tok-kw&quot;&gt;npm&lt;/span&gt; test        &lt;span class=&quot;vc-tok-com&quot;&gt;# 38 testova prošlo&lt;/span&gt;
+
+&lt;span class=&quot;vc-tok-com&quot;&gt;# ljudski pregled i izdanje&lt;/span&gt;
+&lt;span class=&quot;vc-tok-kw&quot;&gt;git&lt;/span&gt; push origin review&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=470,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Блок кода «Конвейер»" loading="lazy"></iframe></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-process-quality"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/kvalitet</p><h2 class="gs-heading">Kod piše Claude, za kvalitet odgovaramo mi</h2><p class="gs-normal">Vajbkoding se kritikuje zbog koda koji niko ne razumije. Zato imamo šest pravila.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Svaku promjenu čita čovjek</h3><p class="gs-normal">Pregled prije svakog izdanja. Kod koji niko nije razumio ne ide u produkciju.</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Testovi za ključne scenarije</h3><p class="gs-normal">Plaćanje, registracija, podaci klijenata — sve što ne smije da se pokvari.</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Bezbjednosna provjera</h3><p class="gs-normal">Zavisnosti, tajne i prava pristupa. Ključeve čuvamo u sefu za tajne, a ne u kodu.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Arhitektura za rast</h3><p class="gs-normal">Moduli i jasna struktura umjesto špageta. Kod će izdržati sljedeću verziju.</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Kod i pristupi su vaši</h3><p class="gs-normal">Repozitorijum u vašem GitHubu ili GitLabu od prvog dana.</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Dokumentacija</h3><p class="gs-normal">Kako pokrenuti, gdje je šta i šta mijenjati — za vaš tim i za sljedećeg agenta.</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-process-faq"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/pitanja</p><h2 class="gs-heading">Česta pitanja</h2></div><div class="gs-faq"><details><summary>Ko piše kod?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Kod piše Claude. Mi postavljamo zadatak, provjeravamo svaku promjenu i odgovaramo za rezultat.</p></details><details><summary>Kome pripada kod?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Vama. Repozitorijum otvaramo u vašem GitHubu ili GitLabu, a nakon izdanja predajemo pristupe i uputstvo.</p></details><details><summary>Šta ako prototip ne uspije?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Onda je hipoteza provjerena za nekoliko dana, a ne mjeseci. Analiziramo šta su korisnici pokazali i pravimo sljedeću verziju.</p></details><details><summary>Radite li sa postojećim kodom?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Da. Počinjemo revizijom: arhitektura, testovi i bezbjednost — a zatim nastavljamo razvoj.</p></details><details><summary>Možete li povezati AI agente sa našim timom?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Da. Podešavamo Claude Code, Cursor ili GitHub Copilot za vaš proces i učimo tim da radi sa agentima.</p></details><details><summary>Koliko košta?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Računamo nakon upita: cijena zavisi od obima, integracija i bezbjednosnih zahtjeva. Procjenu šaljemo prije početka rada.</p></details></div></div></div></div></section><section class="gs-sec gs-sec--3" id="s-process-cta" data-theme="dark"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/početak</p><h2 class="gs-heading">Počnimo od upita</h2><p class="gs-normal">5 minuta za upit — i šaljemo plan, rokove i cijenu.</p></div><a class="gs-btn gs-btn--filled vc-type-label" href="#/brief">Popunite upit</a></div></div></div></section></main>
+<main data-page="brief" hidden><section class="gs-sec gs-sec--1" id="s-brief-intro"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/upit</p><h1 class="gs-title">Recite nam o zadatku</h1><p class="gs-normal">5 minuta za upit. Nakon toga šaljemo plan, rokove i cijenu — bez obaveze.</p></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-brief-form"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-form">
+  <p class="gs-form__label vc-type-caption">Google Форма — встраивается через «Вставка → Формы»</p>
+  <img src="../images/form-header-me.png" alt="" width="1600" height="400" loading="lazy">
+  <div class="gs-form__body">
+    <div class="gs-form__head"><p class="gs-form__title">Upit — Vibecoding Company</p><p class="gs-normal">5 minuta. Nakon upita šaljemo plan, rokove i cijenu.</p></div>
+    <div class="gs-form__q"><p class="gs-normal">Opišite zadatak riječima <span class="gs-form__star" aria-hidden="true">*</span></p><p class="gs-form__help">Kao kolegi: šta treba da radi i za koga. Na primjer: zakazivanje sa onlajn plaćanjem.</p><span class="gs-form__line gs-form__line--tall"></span></div><div class="gs-form__q"><p class="gs-normal">Šta već imate?</p><ul class="gs-form__opts"><li><span class="gs-form__check"></span>Samo ideju</li><li><span class="gs-form__check"></span>Makete ili specifikaciju</li><li><span class="gs-form__check"></span>Proizvod koji radi</li><li><span class="gs-form__check"></span>Kod koji je napisao AI</li></ul></div><div class="gs-form__q"><p class="gs-normal">Kakav rezultat vam treba? <span class="gs-form__star" aria-hidden="true">*</span></p><ul class="gs-form__opts"><li><span class="gs-form__radio"></span>Prototip ili MVP</li><li><span class="gs-form__radio"></span>Alat za tim</li><li><span class="gs-form__radio"></span>AI agenti ili revizija koda</li><li><span class="gs-form__radio"></span>Dizajn proizvoda</li><li><span class="gs-form__radio"></span>Lansiranje i rast</li><li><span class="gs-form__radio"></span>Još ne znam — pomozite da izaberem</li></ul></div><div class="gs-form__q"><p class="gs-normal">Kada vam treba rezultat?</p><ul class="gs-form__opts"><li><span class="gs-form__radio"></span>Ove sedmice</li><li><span class="gs-form__radio"></span>U roku od mjesec dana</li><li><span class="gs-form__radio"></span>Bez žurbe</li></ul></div><div class="gs-form__q"><p class="gs-normal">Kompanija i sajt</p><span class="gs-form__line"></span></div><div class="gs-form__q"><p class="gs-normal">Kako da vam se obraćamo? <span class="gs-form__star" aria-hidden="true">*</span></p><span class="gs-form__line"></span></div><div class="gs-form__q"><p class="gs-normal">Kako da vas kontaktiramo? <span class="gs-form__star" aria-hidden="true">*</span></p><p class="gs-form__help">E-pošta, Telegram ili telefon.</p><span class="gs-form__line"></span></div><div class="gs-form__q"><p class="gs-normal">Saglasnost za obradu podataka <span class="gs-form__star" aria-hidden="true">*</span></p><ul class="gs-form__opts"><li><span class="gs-form__check"></span>Saglasan/saglasna sam sa obradom ličnih podataka u skladu sa politikom: <mark class="ph">[link ka politici]</mark></li></ul></div>
+    <span class="gs-form__submit vc-type-label">Pošalji</span>
+  </div>
+</div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Šta slijedi</h3><ol class="gs-normal gs-list"><li>Čitamo upit i odgovaramo u roku od jednog radnog dana.</li><li>Ako treba, razgovaramo 30 minuta.</li><li>Šaljemo plan, rokove i cijenu.</li></ol><p class="gs-small"><span class="tilde">~</span>/kontakt</p><p class="gs-normal">Radije pišete? E-pošta: <mark class="ph">[zdravo@vas-domen.me]</mark>, Telegram: <mark class="ph">[@vase_ime]</mark>.</p></div><a class="gs-btn gs-btn--outlined vc-type-label" href="#/brief">Otvori formular</a></div></div></div></section></main>
+<footer class="gs-footer"><div class="gs-text"><p class="gs-normal"><strong>Vibecoding Company</strong> · Od ideje do izdanja — na istoj talasnoj dužini</p><p class="gs-normal">E-pošta: <mark class="ph">[zdravo@vas-domen.me]</mark> · Telegram: <mark class="ph">[@vase_ime]</mark></p><p class="gs-small"><mark class="ph">[Naziv kompanije]</mark>, PIB <mark class="ph">[0000000000]</mark> · <a href="#/brief">Politika privatnosti</a></p><p class="gs-small gs-langs"><a href="../en/" hreflang="en" lang="en">English</a> · <a href="../az/" hreflang="az" lang="az">Azərbaycanca</a> · <a href="../cs/" hreflang="cs" lang="cs">Čeština</a> · <a href="../me/" hreflang="cnr" lang="cnr" aria-current="true">Crnogorski</a> · <a href="../da/" hreflang="da" lang="da">Dansk</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../et/" hreflang="et" lang="et">Eesti</a> · <a href="../es/" hreflang="es" lang="es">Español</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../ga/" hreflang="ga" lang="ga">Gaeilge</a> · <a href="../hr/" hreflang="hr" lang="hr">Hrvatski</a> · <a href="../is/" hreflang="is" lang="is">Íslenska</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../lv/" hreflang="lv" lang="lv">Latviešu</a> · <a href="../lt/" hreflang="lt" lang="lt">Lietuvių</a> · <a href="../lb/" hreflang="lb" lang="lb">Lëtzebuergesch</a> · <a href="../hu/" hreflang="hu" lang="hu">Magyar</a> · <a href="../mt/" hreflang="mt" lang="mt">Malti</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../no/" hreflang="nb" lang="nb">Norsk</a> · <a href="../uz/" hreflang="uz" lang="uz">Oʻzbekcha</a> · <a href="../pl/" hreflang="pl" lang="pl">Polski</a> · <a href="../pt/" hreflang="pt" lang="pt">Português</a> · <a href="../ro/" hreflang="ro" lang="ro">Română</a> · <a href="../sq/" hreflang="sq" lang="sq">Shqip</a> · <a href="../sk/" hreflang="sk" lang="sk">Slovenčina</a> · <a href="../sl/" hreflang="sl" lang="sl">Slovenščina</a> · <a href="../fi/" hreflang="fi" lang="fi">Suomi</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../tr/" hreflang="tr" lang="tr">Türkçe</a> · <a href="../tk/" hreflang="tk" lang="tk">Türkmençe</a> · <a href="../el/" hreflang="el" lang="el">Ελληνικά</a> · <a href="../be/" hreflang="be" lang="be">Беларуская</a> · <a href="../bg/" hreflang="bg" lang="bg">Български</a> · <a href="../kk/" hreflang="kk" lang="kk">Қазақша</a> · <a href="../ky/" hreflang="ky" lang="ky">Кыргызча</a> · <a href="../mk/" hreflang="mk" lang="mk">Македонски</a> · <a href="../ru/" hreflang="ru" lang="ru">Русский</a> · <a href="../tg/" hreflang="tg" lang="tg">Тоҷикӣ</a> · <a href="../uk/" hreflang="uk" lang="uk">Українська</a> · <a href="../hy/" hreflang="hy" lang="hy">Հայերեն</a> · <a href="../ka/" hreflang="ka" lang="ka">ქართული</a> · <a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a></p><p class="gs-small">© 2026 Vibecoding Company</p></div></footer>
+</div>
+</div>
+<script>(function(){
+var pages=[].slice.call(document.querySelectorAll('[data-page]'));
+var links=[].slice.call(document.querySelectorAll('.gs-links a'));
+var nav=document.querySelector('.gs-nav'),burger=document.querySelector('.gs-burger');
+function route(){
+  var parts=location.hash.replace(/^#\/?/,'').split('/');
+  var id=parts[0]||'home';
+  if(!pages.some(function(p){return p.dataset.page===id}))id='home';
+  pages.forEach(function(p){p.hidden=p.dataset.page!==id});
+  links.forEach(function(a){if(a.dataset.page===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  nav.removeAttribute('data-open');burger.setAttribute('aria-expanded','false');
+  var target=parts[1]&&document.getElementById('s-'+id+'-'+parts[1]);
+  if(target)target.scrollIntoView();else window.scrollTo(0,0);
+  var cur=links.filter(function(a){return a.dataset.page===id})[0];
+  document.title=(cur?cur.textContent:'')+' — Vibecoding Company';
+}
+addEventListener('hashchange',route);route();
+burger.addEventListener('click',function(){var open=!nav.hasAttribute('data-open');nav.toggleAttribute('data-open',open);burger.setAttribute('aria-expanded',String(open))});
+var stage=document.querySelector('.pv-stage'),seg=[].slice.call(document.querySelectorAll('.pv-seg button'));
+function setDevice(d,keep){stage.dataset.device=d;seg.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.device===d))});if(keep)try{localStorage.setItem('vc-preview-device',d)}catch(e){}}
+seg.forEach(function(b){b.addEventListener('click',function(){setDevice(b.dataset.device,true)})});
+// ?device=phone в адресе — для ссылок и снимков; выбор кнопкой запоминается в браузере.
+var forced=/[?&]device=(phone|desktop)/.exec(location.search);
+if(forced)setDevice(forced[1]);else try{var saved=localStorage.getItem('vc-preview-device');if(saved==='phone'||saved==='desktop')setDevice(saved)}catch(e){}
+// Смена языка — макет того же языка, та же страница.
+document.querySelector('.pv-lang').addEventListener('change',function(e){location.href='../'+e.target.value+'/'+location.search+location.hash});
+document.addEventListener('click',function(e){var a=e.target.closest('.gs-langs a');if(a){e.preventDefault();location.href=a.getAttribute('href')+location.search+location.hash}});
+})();</script>
+</body>
+</html>

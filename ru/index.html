@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vibecoding Company</title>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="alternate" hreflang="az" href="../az/">
+<link rel="alternate" hreflang="be" href="../be/">
+<link rel="alternate" hreflang="bg" href="../bg/">
+<link rel="alternate" hreflang="cs" href="../cs/">
+<link rel="alternate" hreflang="da" href="../da/">
+<link rel="alternate" hreflang="de" href="../de/">
+<link rel="alternate" hreflang="el" href="../el/">
+<link rel="alternate" hreflang="en" href="../en/">
+<link rel="alternate" hreflang="es" href="../es/">
+<link rel="alternate" hreflang="et" href="../et/">
+<link rel="alternate" hreflang="fi" href="../fi/">
+<link rel="alternate" hreflang="fr" href="../fr/">
+<link rel="alternate" hreflang="ga" href="../ga/">
+<link rel="alternate" hreflang="hr" href="../hr/">
+<link rel="alternate" hreflang="hu" href="../hu/">
+<link rel="alternate" hreflang="hy" href="../hy/">
+<link rel="alternate" hreflang="is" href="../is/">
+<link rel="alternate" hreflang="it" href="../it/">
+<link rel="alternate" hreflang="ja" href="../ja/">
+<link rel="alternate" hreflang="ka" href="../ka/">
+<link rel="alternate" hreflang="kk" href="../kk/">
+<link rel="alternate" hreflang="ko" href="../ko/">
+<link rel="alternate" hreflang="ky" href="../ky/">
+<link rel="alternate" hreflang="lb" href="../lb/">
+<link rel="alternate" hreflang="lt" href="../lt/">
+<link rel="alternate" hreflang="lv" href="../lv/">
+<link rel="alternate" hreflang="cnr" href="../me/">
+<link rel="alternate" hreflang="mk" href="../mk/">
+<link rel="alternate" hreflang="mt" href="../mt/">
+<link rel="alternate" hreflang="nl" href="../nl/">
+<link rel="alternate" hreflang="no" href="../no/">
+<link rel="alternate" hreflang="pl" href="../pl/">
+<link rel="alternate" hreflang="pt" href="../pt/">
+<link rel="alternate" hreflang="ro" href="../ro/">
+<link rel="alternate" hreflang="ru" href="../ru/">
+<link rel="alternate" hreflang="sk" href="../sk/">
+<link rel="alternate" hreflang="sl" href="../sl/">
+<link rel="alternate" hreflang="sq" href="../sq/">
+<link rel="alternate" hreflang="sv" href="../sv/">
+<link rel="alternate" hreflang="tg" href="../tg/">
+<link rel="alternate" hreflang="tk" href="../tk/">
+<link rel="alternate" hreflang="tr" href="../tr/">
+<link rel="alternate" hreflang="uk" href="../uk/">
+<link rel="alternate" hreflang="uz" href="../uz/">
+<link rel="alternate" hreflang="zh" href="../zh/">
+<link rel="stylesheet" href="../brand/tokens.css">
+<link rel="stylesheet" href="../brand/vibe-ui.css">
+<style>
+:root{--bar-h:0px}
+.pv-bar{position:sticky;top:env(safe-area-inset-top, 0px);z-index:30;height:var(--bar-h);background:var(--paper-raised);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:31;background:var(--paper-raised)}
+.pv-bar__in{box-sizing:border-box;max-width:var(--content-wide);height:100%;margin:0 auto;display:flex;align-items:center;gap:var(--space-4);padding:0 var(--space-6)}
+.pv-title{display:flex;align-items:center;gap:var(--space-2);margin:0;color:var(--ink);white-space:nowrap}
+.pv-title span{color:var(--ink-muted)}
+.pv-seg{display:inline-flex;padding:2px;border:1px solid var(--line-strong);border-radius:var(--radius-sm);background:var(--paper)}
+.pv-seg button{height:28px;padding:0 var(--space-3);border:0;border-radius:var(--radius-xs);background:transparent;color:var(--ink-muted);font-family:var(--font-sans);cursor:pointer;transition:background-color 120ms cubic-bezier(0.2,0,0,1)}
+.pv-seg button:hover{background:var(--wash)}
+.pv-seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent)}
+.pv-seg button:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.pv-spacer{flex:1}
+.pv-stage[data-device="phone"]{background:var(--paper-sunken);padding:var(--space-8) var(--space-4) var(--space-16)}
+.pv-stage[data-device="phone"] .site{width:390px;max-width:100%;margin:0 auto;border:1px solid var(--line-strong);border-radius:var(--radius-lg);overflow:clip;box-shadow:var(--shadow-lg)}
+@media (max-width:640px){.pv-title span{display:none}.pv-bar__in{padding:0 var(--space-4);gap:var(--space-2)}.pv-guide .vc-btn__label{display:none}.pv-bar .pv-lang{max-width:116px}}
+@media (max-width:520px){.pv-title{display:none}.pv-bar .pv-lang{max-width:96px}.pv-seg button{padding:0 var(--space-2)}.pv-guide{padding:0 var(--space-2)}}
+
+.site{container:site/inline-size;background:var(--paper);color:var(--ink);font-family:var(--font-sans)}
+.gs-nav{position:sticky;top:calc(var(--bar-h) + env(safe-area-inset-top, 0px));z-index:20;display:flex;align-items:center;gap:var(--space-6);min-height:64px;padding:0 var(--space-6);background:var(--paper);border-bottom:1px solid var(--line)}
+.gs-brand{display:flex;align-items:center;gap:var(--space-3);color:var(--ink);text-decoration:none}
+.gs-brand img{display:block;width:40px;height:40px}
+.gs-links{display:flex;gap:var(--space-1);margin-left:auto}
+.gs-links a{position:relative;display:flex;align-items:center;height:64px;padding:0 var(--space-3);color:var(--ink);text-decoration:none}
+.gs-links a:hover{color:var(--accent)}
+.gs-links a[aria-current="page"]{color:var(--accent)}
+.gs-links a[aria-current="page"]::after{content:"";position:absolute;left:var(--space-3);right:var(--space-3);bottom:0;height:3px;border-radius:var(--radius-xs) var(--radius-xs) 0 0;background:var(--accent)}
+.gs-links a:focus-visible,.gs-brand:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.gs-burger{display:none}
+
+.gs-sec{scroll-margin-top:128px;background:var(--paper);color:var(--ink);padding:var(--space-16) var(--space-6)}
+.gs-sec--2{background:var(--paper-sunken)}
+.gs-wrap{max-width:var(--content-wide);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)}
+.gs-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);align-items:start}
+.gs-col{grid-column:span var(--span);display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-6);min-width:0}
+.gs-col>*{max-width:100%}
+.gs-text{width:100%}
+.gs-title{margin:0;font-family:var(--font-serif);font-weight:400;font-size:53px;line-height:1.1;letter-spacing:-0.02em;text-wrap:balance}
+.gs-heading{margin:0;font-family:var(--font-serif);font-weight:500;font-size:32px;line-height:1.2;letter-spacing:-0.01em;text-wrap:balance}
+.gs-subheading{margin:0;font-family:var(--font-serif);font-weight:500;font-size:24px;line-height:1.25;letter-spacing:-0.005em}
+.gs-normal{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.5}
+.gs-small{margin:0;font-family:var(--font-mono);font-weight:500;font-size:13.3px;line-height:1.5;color:var(--ink-muted)}
+.gs-text>*+*{margin-top:var(--space-3)}
+.gs-text>.gs-small+*{margin-top:var(--space-2)}
+.gs-text>*+.gs-small{margin-top:var(--space-6)}
+.gs-text>.gs-title+*{margin-top:var(--space-5)}
+.gs-text>.gs-heading+.gs-normal{margin-top:var(--space-4)}
+.gs-list{padding-left:1.4em}
+.gs-list li+li{margin-top:var(--space-2)}
+.gs-text a{color:var(--link);text-underline-offset:3px}
+.gs-title em,.gs-heading em{font-style:italic}
+.tilde{color:var(--accent)}
+mark.ph{border-radius:var(--radius-xs);padding:0 2px;background:var(--amber-soft);color:var(--ink)}
+
+.gs-btn{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;height:var(--control-md);padding:0 var(--space-6);border:1px solid var(--accent);border-radius:var(--radius-sm);background:transparent;color:var(--accent);text-decoration:none;transition:background-color 120ms cubic-bezier(0.2,0,0,1)}
+.gs-btn--filled{background:var(--accent);color:var(--on-accent)}
+.gs-btn--filled:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+.gs-btn--outlined:hover{background:var(--accent-soft)}
+.gs-btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+
+.gs-embed{width:100%}
+.gs-embed iframe{display:block;width:100%;height:calc(var(--h) * 1px);border:0;background:transparent}
+.gs-image{display:block;width:100%;height:auto}
+.gs-divider{width:100%;margin:0;border:0;border-top:1px solid var(--line)}
+
+.gs-faq{width:100%;border-top:1px solid var(--line)}
+.gs-faq details{border-bottom:1px solid var(--line)}
+.gs-faq summary{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);padding:var(--space-4) 0;cursor:pointer;list-style:none;font-family:var(--font-serif);font-weight:500;font-size:20px;line-height:1.3}
+.gs-faq summary::-webkit-details-marker{display:none}
+.gs-faq summary .vc-icon{flex:none;color:var(--ink-muted);transition:transform 200ms cubic-bezier(0.2,0,0,1)}
+.gs-faq details[open] summary .vc-icon{transform:rotate(180deg)}
+.gs-faq summary:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+.gs-faq details p{padding-bottom:var(--space-4);color:var(--ink-muted)}
+
+.gs-form{width:100%;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--paper-raised);overflow:hidden}
+.gs-form__label{margin:0;padding:var(--space-2) var(--space-4);border-bottom:1px solid var(--line);color:var(--ink-muted)}
+.gs-form img{display:block;width:100%;height:auto}
+.gs-form__body{display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-5)}
+.gs-form__head,.gs-form__q{padding:var(--space-5);border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--paper)}
+.gs-form__head{border-top:6px solid var(--accent)}
+.gs-form__title{margin:0 0 var(--space-2);font-family:var(--font-serif);font-size:28px;line-height:1.2}
+.gs-form__star{color:var(--brick)}
+.gs-form__help{margin:var(--space-1) 0 0;color:var(--ink-muted);font-size:13px;line-height:1.5}
+.gs-form__line{display:block;width:60%;height:28px;margin-top:var(--space-2);border-bottom:1px solid var(--line-strong)}
+.gs-form__line--tall{width:100%;height:48px}
+.gs-form__opts{margin:var(--space-3) 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--space-2)}
+.gs-form__opts li{display:flex;align-items:center;gap:var(--space-3);font-size:14px;line-height:1.4}
+.gs-form__radio,.gs-form__check{flex:none;width:16px;height:16px;border:2px solid var(--ink-muted)}
+.gs-form__radio{border-radius:var(--radius-full)}
+.gs-form__check{border-radius:3px}
+.gs-form__submit{align-self:flex-start;display:inline-flex;align-items:center;height:var(--control-md);padding:0 var(--space-6);border-radius:var(--radius-sm);background:var(--accent);color:var(--on-accent)}
+
+.gs-footer{padding:var(--space-12) var(--space-6);border-top:1px solid var(--line);background:var(--paper-sunken)}
+.gs-footer .gs-text{max-width:var(--content-wide);margin:0 auto}
+.gs-footer .gs-text>*+*{margin-top:var(--space-2)}
+.gs-langs a{color:var(--ink-muted);text-decoration:none;white-space:nowrap}
+.gs-langs a:hover{color:var(--link);text-decoration:underline}
+.gs-langs a[aria-current]{color:var(--ink)}
+.gs-lang{flex:none}.pv-lang{height:32px;max-width:180px;padding:0 var(--space-2);border:1px solid var(--line-strong);border-radius:var(--radius-sm);background:var(--paper);color:var(--ink);font-family:var(--font-sans);font-size:14px}
+.pv-lang:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+
+@container site (max-width:760px){
+  .gs-nav{gap:var(--space-2);padding:0 var(--space-2)}
+  .gs-brand img{width:32px;height:32px}
+  .gs-burger{display:inline-flex}
+  .gs-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;padding:var(--space-2);border-bottom:1px solid var(--line);background:var(--paper-raised);box-shadow:var(--shadow-lg)}
+  .gs-nav[data-open] .gs-links{display:flex}
+  .gs-links a{height:var(--control-lg)}
+  .gs-links a[aria-current="page"]::after{top:var(--space-3);bottom:var(--space-3);left:0;right:auto;width:3px;height:auto;border-radius:0 var(--radius-xs) var(--radius-xs) 0}
+  .gs-sec{padding:var(--space-12) var(--space-4)}
+  .gs-wrap{gap:var(--space-6)}
+  .gs-row{grid-template-columns:minmax(0,1fr)}
+  .gs-col{grid-column:auto}
+  .gs-embed iframe{height:auto;aspect-ratio:var(--w) / var(--h)}
+  .gs-footer{padding:var(--space-8) var(--space-4)}
+}
+</style>
+</head>
+<body>
+<div class="pv-stage" data-device="desktop">
+<div class="site" data-theme="light" lang="ru">
+<header class="gs-nav">
+  <button type="button" class="gs-burger vc-btn vc-btn--ghost vc-btn--icon" aria-label="Меню" aria-expanded="false"><svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+  <a class="gs-brand vc-type-body" href="#/home"><img src="../images/logo-mark.png" alt="" width="40" height="40">Vibecoding Company</a>
+  <nav class="gs-links vc-type-body" aria-label="Страницы сайта"><a href="#/home" data-page="home">Главная</a><a href="#/services" data-page="services">Услуги</a><a href="#/process" data-page="process">Как мы работаем</a><a href="#/brief" data-page="brief">Бриф</a></nav>
+  <select class="pv-lang gs-lang" aria-label="Язык сайта"><option value="en">English</option><option value="az">Azərbaycanca</option><option value="cs">Čeština</option><option value="me">Crnogorski</option><option value="da">Dansk</option><option value="de">Deutsch</option><option value="et">Eesti</option><option value="es">Español</option><option value="fr">Français</option><option value="ga">Gaeilge</option><option value="hr">Hrvatski</option><option value="is">Íslenska</option><option value="it">Italiano</option><option value="lv">Latviešu</option><option value="lt">Lietuvių</option><option value="lb">Lëtzebuergesch</option><option value="hu">Magyar</option><option value="mt">Malti</option><option value="nl">Nederlands</option><option value="no">Norsk</option><option value="uz">Oʻzbekcha</option><option value="pl">Polski</option><option value="pt">Português</option><option value="ro">Română</option><option value="sq">Shqip</option><option value="sk">Slovenčina</option><option value="sl">Slovenščina</option><option value="fi">Suomi</option><option value="sv">Svenska</option><option value="tr">Türkçe</option><option value="tk">Türkmençe</option><option value="el">Ελληνικά</option><option value="be">Беларуская</option><option value="bg">Български</option><option value="kk">Қазақша</option><option value="ky">Кыргызча</option><option value="mk">Македонски</option><option value="ru" selected>Русский</option><option value="tg">Тоҷикӣ</option><option value="uk">Українська</option><option value="hy">Հայերեն</option><option value="ka">ქართული</option><option value="zh">中文</option><option value="ja">日本語</option><option value="ko">한국어</option></select>
+</header>
+<main data-page="home" hidden><section class="gs-sec gs-sec--1" id="s-home-hero"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:7"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/вайбкодинг-для-бизнеса</p><h1 class="gs-title">Опишите идею <em>словами</em>. Через 3 дня она работает.</h1><p class="gs-normal">Мы собираем цифровые продукты вместе с Claude: код пишет Claude, а за смысл, качество и релиз отвечаем мы. Прототип — за 1–3 дня, стоимость — после брифа.</p></div><a class="gs-btn gs-btn--outlined vc-type-label" href="#/services">Посмотреть услуги</a></div><div class="gs-col" style="--span:5"><div class="gs-embed" style="--w:470;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Поле запроса — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--accent-hover:#8c3a1a;--brick:#a32a33;--control-lg:48px;--control-md:40px;--control-sm:32px;--focus-ring:0 0 0 2px #f5f1e8,0 0 0 4px #a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--ink:#1e1c19;--ink-muted:#686258;--line-strong:#878074;--link:var(--accent);--on-accent:#fffbf5;--paper-raised:#fcfaf5;--radius-full:9999px;--radius-lg:20px;--radius-sm:8px;--shadow-md:0 2px 6px #1e1c190f,0 10px 28px -8px #1e1c1924;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px}.vc-icon{display: inline-block;flex: none;vertical-align: middle}.vc-btn{box-sizing: border-box;display: inline-flex;align-items: center;justify-content: center;gap: var(--space-2);height: var(--control-md);padding: 0 var(--space-4);margin: 0;border: 1px solid transparent;border-radius: var(--radius-sm);background: transparent;color: var(--ink);font-family: var(--font-sans);text-decoration: none;white-space: nowrap;cursor: pointer;user-select: none;-webkit-tap-highlight-color: transparent;transition: background-color 120ms cubic-bezier(0.2,0,0,1),border-color 120ms cubic-bezier(0.2,0,0,1),box-shadow 120ms cubic-bezier(0.2,0,0,1),transform 120ms cubic-bezier(0.2,0,0,1)}.vc-btn:focus-visible{outline: none;box-shadow: var(--focus-ring)}.vc-btn:active:not(:disabled):not([aria-disabled=&quot;true&quot;]){transform: translateY(1px)}.vc-btn--sm{height: var(--control-sm);padding: 0 var(--space-3);gap: var(--space-1)}.vc-btn--icon{padding: 0;width: var(--control-md)}.vc-btn--icon.vc-btn--sm{width: var(--control-sm)}.vc-btn--icon.vc-btn--lg{width: var(--control-lg)}.vc-btn--primary{background: var(--accent);color: var(--on-accent)}.vc-btn--primary:hover:not(:disabled):not([aria-disabled=&quot;true&quot;]){background: var(--accent-hover)}.vc-btn:disabled,.vc-btn[aria-disabled=&quot;true&quot;]{opacity: 0.45;cursor: not-allowed}.vc-prompt{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);padding: var(--space-4) var(--space-3) var(--space-3) var(--space-5);background: var(--paper-raised);border: 1px solid var(--line-strong);border-radius: var(--radius-lg);box-shadow: var(--shadow-md);color: var(--ink);font-family: var(--font-sans);transition: border-color 120ms cubic-bezier(0.2,0,0,1),box-shadow 200ms cubic-bezier(0.2,0,0,1)}.vc-prompt:has(.vc-prompt__input:focus){border-color: var(--accent);box-shadow: var(--focus-ring),var(--shadow-md)}.vc-prompt__row{display: flex;align-items: flex-start;gap: var(--space-3);padding-right: var(--space-2)}.vc-prompt__tilde{flex: none;display: flex;align-items: center;height: 1lh;color: var(--accent)}.vc-prompt__input{flex: 1;min-width: 0;margin: 0;padding: 0;border: 0;outline: none;resize: none;overflow-y: hidden;background: transparent;color: var(--ink);font-family: var(--font-sans)}.vc-prompt__input::placeholder{color: var(--ink-muted);opacity: 1}.vc-prompt__bar{display: flex;align-items: center;gap: var(--space-2);min-height: var(--control-sm)}.vc-prompt__tools{display: flex;align-items: center;gap: var(--space-1);margin-left: calc(var(--space-2) * -1)}.vc-prompt__spacer{flex: 1}.vc-prompt__hint{color: var(--ink-muted);white-space: nowrap;overflow: hidden;text-overflow: ellipsis;min-width: 0}.vc-prompt__status{display: inline-flex;align-items: center;gap: 2px;color: var(--ink-muted)}.vc-prompt__send{flex: none;border-radius: var(--radius-full)}.vc-prompt__stop{display: block;width: 10px;height: 10px;border-radius: 2px;background: currentColor}.vc-prompt--disabled{opacity: 0.45}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-body-sm{font-family: var(--font-sans);font-size: 14px;line-height: 20px;font-weight: 400}.vc-type-label{font-family: var(--font-sans);font-size: 14px;line-height: 20px;font-weight: 500}.vc-type-code-sm{font-family: var(--font-mono);font-size: 12px;line-height: 18px;font-weight: 400}.wrap{flex:1 1 auto;display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-2) var(--space-4) var(--space-4)}.vc-prompt{flex:1 1 auto;min-height:0;margin:0}.vc-prompt__row{flex:1 1 auto;align-items:stretch;min-height:0}.vc-prompt__tilde{align-self:flex-start}.vc-prompt__input{align-self:stretch;min-height:48px;overflow-y:auto}.note{margin:0;color:var(--ink-muted)}.note a{color:var(--link)}.note--error{color:var(--brick)}@media (max-width:420px){.vc-prompt__hint{display:none}}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+  &lt;form class=&quot;vc-prompt&quot; id=&quot;prompt&quot; autocomplete=&quot;off&quot;&gt;
+    &lt;div class=&quot;vc-prompt__row&quot;&gt;
+      &lt;span class=&quot;vc-prompt__tilde vc-type-body&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg class=&quot;vc-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.25&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M4 12a4.4 4.4 0 0 1 8 0 4.4 4.4 0 0 0 8 0&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+      &lt;textarea class=&quot;vc-prompt__input vc-type-body&quot; rows=&quot;2&quot; maxlength=&quot;1500&quot; placeholder=&quot;Например: запись к мастеру с оплатой онлайн&quot; aria-label=&quot;Опишите задачу&quot;&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;vc-prompt__bar&quot;&gt;
+      &lt;div class=&quot;vc-prompt__spacer&quot;&gt;&lt;/div&gt;
+      &lt;span class=&quot;vc-prompt__hint vc-type-code-sm&quot;&gt;Enter — отправить · ⇧Enter — перенос&lt;/span&gt;
+      &lt;button type=&quot;submit&quot; class=&quot;vc-btn vc-btn--primary vc-btn--sm vc-btn--icon vc-type-label vc-prompt__send&quot; aria-label=&quot;Отправить&quot; disabled&gt;&lt;svg class=&quot;vc-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.75&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M12 19.5V4.5&quot;/&gt;&lt;path d=&quot;M5.5 11 12 4.5 18.5 11&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+  &lt;p class=&quot;note vc-type-body-sm&quot; id=&quot;note&quot; role=&quot;status&quot;&gt;Откроем бриф с вашим текстом в новой вкладке. Ответим в течение рабочего дня.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=470,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+// Ссылка на бриф: Google Форма с ответом TASK в первом вопросе (шаг 4 инструкции).
+var BRIEF_LINK = '__BRIEF_LINK__';
+(function(){
+var T={&quot;noLink&quot;:&quot;Бриф ещё не подключён: вставьте ссылку на форму в код блока.&quot;,&quot;ok&quot;:&quot;Открыли бриф в новой вкладке — допишите контакты, и мы ответим в течение рабочего дня.&quot;,&quot;blocked&quot;:&quot;Браузер не открыл вкладку.&quot;,&quot;open&quot;:&quot;Открыть бриф&quot;};
+var form=document.getElementById('prompt'),input=form.querySelector('textarea'),send=form.querySelector('button'),note=document.getElementById('note');
+function sync(){send.disabled=!input.value.trim()}
+function say(html,error){note.innerHTML=html;note.classList.toggle('note--error',!!error);if(window.vcFit)window.vcFit()}
+function submit(){
+  var text=input.value.trim();if(!text)return;
+  if(!/^https:\/\//.test(BRIEF_LINK)||!/=TASK(&amp;|#|$)/.test(BRIEF_LINK)){say(T.noLink,true);return}
+  var url=BRIEF_LINK.replace(/=TASK(?=&amp;|#|$)/,'='+encodeURIComponent(text));
+  var w=window.open(url,'_blank');
+  if(w){try{w.opener=null}catch(e){}input.value='';sync();say(T.ok)}
+  else say(T.blocked+' &lt;a href=&quot;'+url.replace(/&quot;/g,'&amp;quot;')+'&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;'+T.open+'&lt;/a&gt;');
+}
+input.addEventListener('input',sync);
+input.addEventListener('keydown',function(e){if(e.key==='Enter'&amp;&amp;!e.shiftKey&amp;&amp;!e.isComposing){e.preventDefault();submit()}});
+form.addEventListener('submit',function(e){e.preventDefault();submit()});
+sync();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Поле запроса" loading="lazy"></iframe></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-home-languages"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:12"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/языки</p><p class="gs-small gs-langs"><a href="../en/" hreflang="en" lang="en">English</a> · <a href="../az/" hreflang="az" lang="az">Azərbaycanca</a> · <a href="../cs/" hreflang="cs" lang="cs">Čeština</a> · <a href="../me/" hreflang="cnr" lang="cnr">Crnogorski</a> · <a href="../da/" hreflang="da" lang="da">Dansk</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../et/" hreflang="et" lang="et">Eesti</a> · <a href="../es/" hreflang="es" lang="es">Español</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../ga/" hreflang="ga" lang="ga">Gaeilge</a> · <a href="../hr/" hreflang="hr" lang="hr">Hrvatski</a> · <a href="../is/" hreflang="is" lang="is">Íslenska</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../lv/" hreflang="lv" lang="lv">Latviešu</a> · <a href="../lt/" hreflang="lt" lang="lt">Lietuvių</a> · <a href="../lb/" hreflang="lb" lang="lb">Lëtzebuergesch</a> · <a href="../hu/" hreflang="hu" lang="hu">Magyar</a> · <a href="../mt/" hreflang="mt" lang="mt">Malti</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../no/" hreflang="nb" lang="nb">Norsk</a> · <a href="../uz/" hreflang="uz" lang="uz">Oʻzbekcha</a> · <a href="../pl/" hreflang="pl" lang="pl">Polski</a> · <a href="../pt/" hreflang="pt" lang="pt">Português</a> · <a href="../ro/" hreflang="ro" lang="ro">Română</a> · <a href="../sq/" hreflang="sq" lang="sq">Shqip</a> · <a href="../sk/" hreflang="sk" lang="sk">Slovenčina</a> · <a href="../sl/" hreflang="sl" lang="sl">Slovenščina</a> · <a href="../fi/" hreflang="fi" lang="fi">Suomi</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../tr/" hreflang="tr" lang="tr">Türkçe</a> · <a href="../tk/" hreflang="tk" lang="tk">Türkmençe</a> · <a href="../el/" hreflang="el" lang="el">Ελληνικά</a> · <a href="../be/" hreflang="be" lang="be">Беларуская</a> · <a href="../bg/" hreflang="bg" lang="bg">Български</a> · <a href="../kk/" hreflang="kk" lang="kk">Қазақша</a> · <a href="../ky/" hreflang="ky" lang="ky">Кыргызча</a> · <a href="../mk/" hreflang="mk" lang="mk">Македонски</a> · <a href="../ru/" hreflang="ru" lang="ru" aria-current="true">Русский</a> · <a href="../tg/" hreflang="tg" lang="tg">Тоҷикӣ</a> · <a href="../uk/" hreflang="uk" lang="uk">Українська</a> · <a href="../hy/" hreflang="hy" lang="hy">Հայերեն</a> · <a href="../ka/" hreflang="ka" lang="ka">ქართული</a> · <a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a></p></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-home-numbers"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:12"><hr class="gs-divider"></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-text"><h2 class="gs-heading">1–3 дня</h2><p class="gs-normal">от брифа до работающего прототипа</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h2 class="gs-heading">1–5 человек</h2><p class="gs-normal">в команде проекта: продукт, дизайн и инженер</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h2 class="gs-heading">5–10 MVP</h2><p class="gs-normal">в месяц — чтобы проверять гипотезы пачкой, а не по одной</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-home-services"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/услуги</p><h2 class="gs-heading">Что мы делаем</h2><p class="gs-normal">Четыре направления — от первого прототипа до первых клиентов. Начните с любого: точное направление подберём на брифе.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:3"><div class="gs-embed" style="--w:270;--h:320"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Карточка «Прототипы и MVP» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/прототипы&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Прототипы и MVP&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Веб-сервисы, боты, плагины и SaaS под конкретную задачу. Проверяем гипотезу раньше, чем вы наймёте команду.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Прототип — 1–3 дня&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=270,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Карточка «Прототипы и MVP»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:3"><div class="gs-embed" style="--w:270;--h:320"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Карточка «ИИ-агенты и аудит кода» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/агенты&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;ИИ-агенты и аудит кода&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Настраиваем агентов, которые пишут, тестируют и выкладывают код. Следим, чтобы он не превратился в спагетти.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Аудит — от 3 дней&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=270,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Карточка «ИИ-агенты и аудит кода»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:3"><div class="gs-embed" style="--w:270;--h:320"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Карточка «Продуктовый дизайн» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/дизайн&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Продуктовый дизайн&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Находим боль пользователя, пишем точное ТЗ для ИИ и доводим интерфейс до вашего стиля.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Интерфейс — 2–5 дней&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=270,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Карточка «Продуктовый дизайн»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:3"><div class="gs-embed" style="--w:270;--h:320"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Карточка «Запуск и рост» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/рост&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Запуск и рост&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Лендинг, SEO, сообщества и первые пользователи. Продукт мало написать — его нужно продать.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Запуск — от 1 недели&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=270,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Карточка «Запуск и рост»" loading="lazy"></iframe></div></div></div><div class="gs-row"><div class="gs-col" style="--span:12"><a class="gs-btn gs-btn--outlined vc-type-label" href="#/services">Посмотреть все услуги</a></div></div></div></section><section class="gs-sec gs-sec--1" id="s-home-clients"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/клиенты</p><h2 class="gs-heading">Для каких компаний</h2><p class="gs-normal">Размер компании не важен. Важна задача, которую нужно проверить или автоматизировать.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Стартапы</h3><p class="gs-normal">Проверить идею до найма команды и раунда: 5–10 гипотез за месяц вместо одной за полгода.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Малый и средний бизнес</h3><p class="gs-normal">Убрать ручную рутину: запись, заказы, учёт и отчёты. Инструмент подстраивается под ваш процесс, а не наоборот.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Корпорации</h3><p class="gs-normal">Проверить гипотезу, не отвлекая основной ИТ. Внутренние инструменты — за дни, с ревью и тестами.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Агентства и студии</h3><p class="gs-normal">Собрать прототип для вашего клиента к встрече — иногда прямо во время переговоров.</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-home-compare"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/сравнение</p><h2 class="gs-heading">Чем мы отличаемся от классической разработки</h2></div></div></div><div class="gs-row"><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Штат</h3><p class="gs-small">Классическая IT-компания</p><p class="gs-normal">Десятки и сотни разработчиков, QA и PM</p><p class="gs-small">Vibecoding Company</p><p class="gs-normal">1–5 человек: генералисты и продакт-менеджеры</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Скорость релиза</h3><p class="gs-small">Классическая IT-компания</p><p class="gs-normal">MVP — за 2–6 месяцев</p><p class="gs-small">Vibecoding Company</p><p class="gs-normal">MVP — от нескольких часов до 3 дней</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Главный навык</h3><p class="gs-small">Классическая IT-компания</p><p class="gs-normal">Синтаксис языков и алгоритмы</p><p class="gs-small">Vibecoding Company</p><p class="gs-normal">Системное мышление, насмотренность и продуктовое видение</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><h3 class="gs-subheading">Цена ошибки</h3><p class="gs-small">Классическая IT-компания</p><p class="gs-normal">Месяцы оплаченной работы команды</p><p class="gs-small">Vibecoding Company</p><p class="gs-normal">Несколько часов и пара долларов за токены API</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-normal">Скорость не отменяет инженерию: каждое изменение читает человек, а ключевые сценарии покрыты тестами. <a href="#/process">Как мы проверяем код</a></p></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-home-process"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/процесс</p><h2 class="gs-heading">Человек решает, Claude пишет</h2><p class="gs-normal">Намерение и вкус — за вами и нами, черновик кода — за Claude, качество и релиз — снова за людьми.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:3"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/бриф</p><h3 class="gs-subheading">Вы описываете задачу</h3><p class="gs-normal">Словами, как коллеге. Можно голосом или скриншотом. Бриф занимает 15 минут.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/код</p><h3 class="gs-subheading">Claude пишет код</h3><p class="gs-normal">Мы ставим задачу и направляем. Прототип готов за 1–3 дня.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/ревью</p><h3 class="gs-subheading">Мы проверяем</h3><p class="gs-normal">Читаем каждое изменение, гоняем тесты, ищем уязвимости.</p></div></div><div class="gs-col" style="--span:3"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/релиз</p><h3 class="gs-subheading">Мы выпускаем</h3><p class="gs-normal">Выкладываем продукт и передаём вам код, доступы и инструкцию.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:12"><a class="gs-btn gs-btn--outlined vc-type-label" href="#/process">Посмотреть процесс</a></div></div></div></section><section class="gs-sec gs-sec--2" id="s-home-examples"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/примеры</p><h2 class="gs-heading">Какие задачи мы берём</h2><p class="gs-normal">Это типовые задачи, а не проекты из портфолио. Сроки — ориентир для прототипа.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Запись с оплатой онлайн» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/примеры/салон&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Запись к мастеру с оплатой онлайн&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Бот в Telegram: свободные окна, предоплата через СБП и напоминание за час. Записи — в Google Таблице.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Прототип — 2 дня&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Запись с оплатой онлайн»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Калькулятор доставки» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/примеры/логистика&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Калькулятор доставки для менеджеров&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Форма считает тариф по весу, габаритам и зоне за 10 секунд — вместо ручного расчёта в таблице.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Прототип — 1 день&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Калькулятор доставки»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Сводка отзывов» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/примеры/маркетплейс&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Утренняя сводка отзывов&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Агент собирает отзывы, группирует по темам и к 9:00 присылает сводку в Telegram.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Прототип — 1 день&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Сводка отзывов»" loading="lazy"></iframe></div></div></div></div></section><section class="gs-sec gs-sec--3" id="s-home-cta" data-theme="dark"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:7"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/старт</p><h2 class="gs-heading">От идеи до релиза — на одной <em>волне</em></h2><p class="gs-normal">Опишите задачу — после брифа пришлём план, сроки и стоимость.</p></div><a class="gs-btn gs-btn--filled vc-type-label" href="#/brief">Обсудить проект</a></div><div class="gs-col" style="--span:5"><img class="gs-image" src="../images/brand-field.png" alt="Черновик на бумаге, сшитый с кодом, и знак «волна-курсор»" width="1200" height="900" loading="lazy"></div></div></div></section></main>
+<main data-page="services" hidden><section class="gs-sec gs-sec--1" id="s-services-intro"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/услуги</p><h1 class="gs-title">Услуги и сроки</h1><p class="gs-normal">Четыре направления — от прототипа до первых клиентов. Стоимость считаем после брифа: она зависит от объёма, интеграций и требований к безопасности.</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-services-prototypes"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/прототипы</p><h2 class="gs-heading">Прототипы и MVP</h2><p class="gs-normal">Собираем веб-сервисы, ботов, плагины и SaaS под конкретную боль рынка. Задача — проверить гипотезу на живых пользователях раньше, чем вы вложитесь в разработку.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Что вы получаете</h3><ul class="gs-normal gs-list"><li>Рабочий прототип на реальных данных, а не макет</li><li>Код в вашем репозитории и инструкцию по запуску</li><li>Аналитику: что делают пользователи и где уходят</li><li>План доработки до продакшена</li></ul></div></div><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Форматы и сроки</h3><ul class="gs-normal gs-list"><li>Прототип — 1–3 дня</li><li>Серия гипотез — 5–10 MVP в месяц</li><li>Инструмент для B2B-клиента — на встрече или за сутки после неё</li></ul><p class="gs-small">Стоимость — после брифа</p></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-services-agents"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/агенты</p><h2 class="gs-heading">ИИ-агенты, пайплайны и аудит</h2><p class="gs-normal">Код пишут нейросети, поэтому главная работа — управлять ими. Настраиваем агентов и конвейеры для вашей команды и следим, чтобы код оставался понятным и масштабируемым.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Что вы получаете</h3><ul class="gs-normal gs-list"><li>Цепочки агентов, которые пишут, тестируют и выкладывают код</li><li>Единый конвейер из Claude Code, Cursor, Replit или GitHub Copilot</li><li>Правила для агентов: стиль кода, тесты, ревью</li><li>Аудит архитектуры: отчёт с рисками и план исправлений</li></ul></div></div><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Форматы и сроки</h3><ul class="gs-normal gs-list"><li>Аудит кода — 3–5 дней</li><li>Настройка конвейера — 1–2 недели</li><li>Обучение команды — 2 встречи по 2 часа</li></ul><p class="gs-small">Стоимость — после брифа</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-services-design"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/дизайн</p><h2 class="gs-heading">Продуктовый дизайн и UX/UI</h2><p class="gs-normal">Когда код почти ничего не стоит, выигрывает продукт, которым удобнее пользоваться. Начинаем с боли пользователя и заканчиваем интерфейсом в вашем стиле.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Что вы получаете</h3><ul class="gs-normal gs-list"><li>Интервью и разбор аудитории: что болит и за что платят</li><li>Точное ТЗ для ИИ — без «сделайте красиво»</li><li>Интерфейс в вашем стиле вместо типовых экранов</li><li>Дизайн-систему: цвета, шрифты, компоненты</li></ul></div></div><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Форматы и сроки</h3><ul class="gs-normal gs-list"><li>Исследование — 2–3 дня</li><li>Интерфейс прототипа — 2–5 дней</li></ul><p class="gs-small">Стоимость — после брифа</p></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-services-growth"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/рост</p><h2 class="gs-heading">Запуск, маркетинг и рост</h2><p class="gs-normal">Написать приложение теперь может каждый. Выигрывает тот, кто умеет его продать, — поэтому запуск мы планируем вместе с продуктом.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Что вы получаете</h3><ul class="gs-normal gs-list"><li>Лендинг и воронку: от первого касания до заявки</li><li>SEO и контент под запросы вашей аудитории</li><li>Работу с сообществами и первых пользователей</li><li>Историю и визуальный стиль продукта</li></ul></div></div><div class="gs-col" style="--span:6"><div class="gs-text"><h3 class="gs-subheading">Форматы и сроки</h3><ul class="gs-normal gs-list"><li>Лендинг и аналитика — 2–3 дня</li><li>План роста — 1 неделя</li><li>Сопровождение — помесячно</li></ul><p class="gs-small">Стоимость — после брифа</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-services-examples"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/примеры</p><h2 class="gs-heading">Примеры задач</h2><p class="gs-normal">Типовые задачи и сроки прототипа. Это не проекты из портфолио — так выглядит результат первых дней работы.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Запись с оплатой онлайн» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/примеры/салон&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Запись к мастеру с оплатой онлайн&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Бот в Telegram: свободные окна, предоплата через СБП и напоминание за час. Записи — в Google Таблице.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Прототип — 2 дня&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Запись с оплатой онлайн»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Калькулятор доставки» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/примеры/логистика&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Калькулятор доставки для менеджеров&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Форма считает тариф по весу, габаритам и зоне за 10 секунд — вместо ручного расчёта в таблице.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Прототип — 1 день&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Калькулятор доставки»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Сводка отзывов» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/примеры/маркетплейс&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Утренняя сводка отзывов&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Агент собирает отзывы, группирует по темам и к 9:00 присылает сводку в Telegram.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Прототип — 1 день&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Сводка отзывов»" loading="lazy"></iframe></div></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Кабинет дилера» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/примеры/опт&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Кабинет дилера&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Остатки со склада, цены и заказ в один клик. Интеграцию с 1С подключаем после прототипа.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Прототип — 3 дня&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Кабинет дилера»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Лендинг и лист ожидания» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/примеры/запуск&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Лендинг и лист ожидания&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Проверяем спрос на новую услугу: лендинг, форма, аналитика и первые посетители из сообществ.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Запуск — 1 неделя&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Лендинг и лист ожидания»" loading="lazy"></iframe></div></div><div class="gs-col" style="--span:4"><div class="gs-embed" style="--w:370;--h:290"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Пример «Аудит кода» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&amp;family=Onest:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--font-sans:Onest,&quot;Segoe UI&quot;,system-ui,-apple-system,sans-serif;--font-serif:&quot;Source Serif 4&quot;,Georgia,&quot;Times New Roman&quot;,serif;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--paper-raised:#fcfaf5;--radius-md:12px;--radius-xs:6px;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--wash:#1e1c190f}.vc-card{box-sizing: border-box;display: flex;flex-direction: column;gap: var(--space-3);min-width: 0;padding: var(--space-6);background: var(--paper-raised);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink);text-decoration: none}.vc-card__head{display: flex;align-items: flex-start;justify-content: space-between;gap: var(--space-4)}.vc-card__heading{display: flex;flex-direction: column;gap: var(--space-2);min-width: 0}.vc-card__title{margin: 0;color: var(--ink);text-wrap: balance}.vc-card__body{color: var(--ink-muted)}.vc-card__body &gt; :first-child{margin-top: 0}.vc-card__body &gt; :last-child{margin-bottom: 0}.vc-card__footer{display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2);margin-top: auto;padding-top: var(--space-2)}.vc-eyebrow{margin: 0;color: var(--ink-muted)}.vc-eyebrow__tilde{color: var(--accent)}.vc-badge{box-sizing: border-box;display: inline-flex;align-items: center;gap: var(--space-1);height: 22px;padding: 0 var(--space-2);border-radius: var(--radius-xs);background: var(--wash);color: var(--ink);font-family: var(--font-sans);white-space: nowrap;vertical-align: middle}.vc-type-title-3{font-family: var(--font-serif);font-size: 24px;line-height: 30px;font-weight: 500;letter-spacing: -0.005em}.vc-type-body{font-family: var(--font-sans);font-size: 16px;line-height: 24px;font-weight: 400}.vc-type-caption{font-family: var(--font-sans);font-size: 12px;line-height: 16px;font-weight: 500;letter-spacing: 0.01em}.vc-type-eyebrow{font-family: var(--font-mono);font-size: 13px;line-height: 20px;font-weight: 500}.vc-card{flex:1 1 auto}.vc-card__title,.vc-card__body{hyphens:auto;overflow-wrap:break-word}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;article class=&quot;vc-card&quot;&gt;
+  &lt;div class=&quot;vc-card__head&quot;&gt;&lt;div class=&quot;vc-card__heading&quot;&gt;
+    &lt;p class=&quot;vc-eyebrow vc-type-eyebrow&quot;&gt;&lt;span class=&quot;vc-eyebrow__tilde&quot;&gt;~&lt;/span&gt;/примеры/аудит&lt;/p&gt;
+    &lt;h3 class=&quot;vc-card__title vc-type-title-3&quot;&gt;Аудит кода от нейросети&lt;/h3&gt;
+  &lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;vc-card__body vc-type-body&quot;&gt;Разбираем, что написал ИИ: архитектура, безопасность, тесты. Отчёт с рисками и план исправлений.&lt;/div&gt;
+  &lt;div class=&quot;vc-card__footer&quot;&gt;&lt;span class=&quot;vc-badge vc-badge--neutral vc-type-caption&quot;&gt;Отчёт — 3–5 дней&lt;/span&gt;&lt;/div&gt;
+&lt;/article&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=370,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Пример «Аудит кода»" loading="lazy"></iframe></div></div></div></div></section><section class="gs-sec gs-sec--3" id="s-services-price" data-theme="dark"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/стоимость</p><h2 class="gs-heading">Сколько стоит</h2><p class="gs-normal">Стоимость считаем после брифа. На неё влияют три вещи: объём работ, интеграции (1С, CRM, платежи) и требования к безопасности. Оценку с планом и сроками пришлём до начала работ.</p></div><a class="gs-btn gs-btn--filled vc-type-label" href="#/brief">Обсудить проект</a></div></div></div></section></main>
+<main data-page="process" hidden><section class="gs-sec gs-sec--1" id="s-process-intro"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/процесс</p><h1 class="gs-title">Как мы работаем</h1><p class="gs-normal">Человек решает, Claude пишет. Намерение и вкус — за вами и нами, черновик кода — за Claude, качество и релиз — снова за людьми.</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-process-steps"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:7"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/бриф · 15–30 минут</p><h3 class="gs-subheading">Вы описываете задачу</h3><p class="gs-normal">Словами — как коллеге. Можно голосом, скриншотом или ссылкой на конкурента. Продакт-менеджер задаёт вопросы и фиксирует, что значит «готово».</p><p class="gs-small"><span class="tilde">~</span>/код · 1–3 дня</p><h3 class="gs-subheading">Claude пишет код, мы направляем</h3><p class="gs-normal">Разбиваем задачу на шаги, пишем инструкции для агентов и собираем прототип. Прогресс видно каждый день.</p><p class="gs-small"><span class="tilde">~</span>/ревью · в те же 1–3 дня</p><h3 class="gs-subheading">Мы проверяем</h3><p class="gs-normal">Инженер читает каждое изменение, пишет тесты на ключевые сценарии и проверяет зависимости, секреты и права доступа.</p><p class="gs-small"><span class="tilde">~</span>/релиз · 1 день</p><h3 class="gs-subheading">Мы выпускаем</h3><p class="gs-normal">Выкладываем на ваш сервер или в облако и передаём репозиторий, доступы и инструкцию. Дальше — поддержка или следующая гипотеза.</p></div></div><div class="gs-col" style="--span:5"><div class="gs-embed" style="--w:470;--h:330"><iframe srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot; data-theme=&quot;light&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Блок кода «Конвейер» — Vibecoding Company&lt;/title&gt;
+&lt;!-- Vibecoding Company · вставка для Google Sites: «Вставка → Встроить → Встроить код». --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;&gt;
+&lt;style&gt;
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}#fit{display:flex;flex-direction:column;transform-origin:0 0}
+:root{color-scheme:light;--accent:#a64826;--amber:#85570f;--control-md:40px;--dusk:#3c628f;--font-mono:&quot;JetBrains Mono&quot;,ui-monospace,&quot;SF Mono&quot;,Menlo,Consolas,monospace;--ink:#1e1c19;--ink-muted:#686258;--line:#ddd5c6;--moss:#4e6b39;--paper-sunken:#ede7db;--radius-md:12px;--space-1:4px;--space-3:12px;--space-4:16px}.vc-code{box-sizing: border-box;min-width: 0;margin: 0;overflow: hidden;background: var(--paper-sunken);border: 1px solid var(--line);border-radius: var(--radius-md);color: var(--ink)}.vc-code__head{display: flex;align-items: center;gap: var(--space-3);min-height: var(--control-md);padding: 0 var(--space-1) 0 var(--space-4);border-bottom: 1px solid var(--line)}.vc-code__file{flex: 1;min-width: 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;color: var(--ink-muted)}.vc-code__lang{flex: none;color: var(--ink-muted)}.vc-code__copy{flex: none}.vc-code__body{display: flex}.vc-code__gutter{flex: none;margin: 0;padding: var(--space-4) 0 var(--space-4) var(--space-4);color: var(--ink-muted);text-align: right;user-select: none}.vc-code__pre{flex: 1;min-width: 0;margin: 0;padding: var(--space-4);overflow-x: auto;tab-size: 2;color: var(--ink)}.vc-code__pre:focus-visible{outline: 2px solid var(--accent);outline-offset: -2px}.vc-code__pre code{font: inherit}.vc-tok-kw{color: var(--accent)}.vc-tok-str{color: var(--moss)}.vc-tok-num{color: var(--amber)}.vc-tok-fn{color: var(--dusk)}.vc-tok-com{color: var(--ink-muted)}.vc-type-code{font-family: var(--font-mono);font-size: 14px;line-height: 22px;font-weight: 400}.vc-type-code-sm{font-family: var(--font-mono);font-size: 12px;line-height: 18px;font-weight: 400}.vc-code{flex:1 1 auto;display:flex;flex-direction:column}.vc-code__head{padding-right:var(--space-4)}.vc-code__body{flex:1 1 auto;min-height:0}.vc-code__pre{white-space:pre-wrap;overflow-wrap:anywhere}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fit&quot;&gt;
+&lt;figure class=&quot;vc-code&quot;&gt;
+  &lt;figcaption class=&quot;vc-code__head&quot;&gt;&lt;span class=&quot;vc-code__file vc-type-code-sm&quot;&gt;~/проекты/запись-к-мастеру&lt;/span&gt;&lt;span class=&quot;vc-code__lang vc-type-code-sm&quot;&gt;bash&lt;/span&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;vc-code__body&quot;&gt;&lt;pre class=&quot;vc-code__pre vc-type-code&quot; tabindex=&quot;0&quot;&gt;&lt;code&gt;&lt;span class=&quot;vc-tok-com&quot;&gt;# бриф → задача для агента&lt;/span&gt;
+&lt;span class=&quot;vc-tok-kw&quot;&gt;claude&lt;/span&gt; &lt;span class=&quot;vc-tok-str&quot;&gt;&amp;quot;бот записи с оплатой по СБП&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;vc-tok-com&quot;&gt;# тесты — до ревью человека&lt;/span&gt;
+&lt;span class=&quot;vc-tok-kw&quot;&gt;npm&lt;/span&gt; test        &lt;span class=&quot;vc-tok-com&quot;&gt;# 38 тестов прошли&lt;/span&gt;
+
+&lt;span class=&quot;vc-tok-com&quot;&gt;# ревью человека и релиз&lt;/span&gt;
+&lt;span class=&quot;vc-tok-kw&quot;&gt;git&lt;/span&gt; push origin review&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){var W0=470,f=document.getElementById('fit');var xs=f.querySelectorAll('[data-fit-x]');
+function fits(s){f.style.transform=s!==1?'scale('+s+')':'';f.style.width=innerWidth/s+'px';f.style.height='auto';
+if(f.offsetHeight&gt;innerHeight/s+0.5)return false;for(var i=0;i&lt;xs.length;i++)if(xs[i].scrollWidth&gt;xs[i].clientWidth+1)return false;return true}
+function run(){if(!innerWidth||!innerHeight)return;var s=Math.min(1.15,Math.max(1,innerWidth/W0));if(!fits(s)){var lo=0.6,hi=s;for(var i=0;i&lt;8;i++){var m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}s=lo;fits(s)}f.style.height=innerHeight/s+'px'}
+var last='';function check(){var k=innerWidth+'x'+innerHeight;if(k!==last){last=k;run()}}
+addEventListener('resize',check);if(window.ResizeObserver)new ResizeObserver(check).observe(document.documentElement);
+if(document.fonts)document.fonts.ready.then(run);run();last=innerWidth+'x'+innerHeight;window.vcFit=run})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" title="Блок кода «Конвейер»" loading="lazy"></iframe></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-process-quality"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/качество</p><h2 class="gs-heading">Код пишет Claude, за качество отвечаем мы</h2><p class="gs-normal">Вайбкодинг критикуют за код, который никто не понимает. Поэтому у нас шесть правил.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Каждое изменение читает человек</h3><p class="gs-normal">Ревью перед каждым релизом. Код, который никто не понял, в продакшен не уходит.</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Тесты на ключевые сценарии</h3><p class="gs-normal">Оплата, регистрация, данные клиентов — всё, что не должно сломаться.</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Проверка безопасности</h3><p class="gs-normal">Зависимости, секреты и права доступа. Ключи храним в хранилище секретов, а не в коде.</p></div></div></div><div class="gs-row"><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Архитектура на вырост</h3><p class="gs-normal">Модули и понятная структура вместо спагетти. Код выдержит следующую версию.</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Код и доступы — ваши</h3><p class="gs-normal">Репозиторий в вашем GitHub или GitLab с первого дня.</p></div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Документация</h3><p class="gs-normal">Как запустить, где что лежит и что менять — для вашей команды и для следующего агента.</p></div></div></div></div></section><section class="gs-sec gs-sec--2" id="s-process-faq"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/вопросы</p><h2 class="gs-heading">Частые вопросы</h2></div><div class="gs-faq"><details><summary>Кто пишет код?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Код пишет Claude. Мы ставим задачу, проверяем каждое изменение и отвечаем за результат.</p></details><details><summary>Кому принадлежит код?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Вам. Репозиторий заводим в вашем GitHub или GitLab, после релиза передаём доступы и инструкцию.</p></details><details><summary>Что, если прототип не сработает?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Значит, гипотеза проверена за дни, а не за месяцы. Разберём, что показали пользователи, и соберём следующую версию.</p></details><details><summary>Работаете с готовым кодом?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Да. Начинаем с аудита: смотрим архитектуру, тесты и безопасность, потом дописываем.</p></details><details><summary>Можно подключить ИИ-агентов к нашей команде?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Да. Настраиваем Claude Code, Cursor или GitHub Copilot под ваш процесс и учим команду работать с агентами.</p></details><details><summary>Сколько это стоит?<svg class="vc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg></summary><p class="gs-normal">Считаем после брифа: цена зависит от объёма, интеграций и требований к безопасности. Оценку пришлём до начала работ.</p></details></div></div></div></div></section><section class="gs-sec gs-sec--3" id="s-process-cta" data-theme="dark"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/старт</p><h2 class="gs-heading">Начнём с брифа</h2><p class="gs-normal">5 минут на бриф — и мы пришлём план, сроки и стоимость.</p></div><a class="gs-btn gs-btn--filled vc-type-label" href="#/brief">Заполнить бриф</a></div></div></div></section></main>
+<main data-page="brief" hidden><section class="gs-sec gs-sec--1" id="s-brief-intro"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-text"><p class="gs-small"><span class="tilde">~</span>/бриф</p><h1 class="gs-title">Расскажите о задаче</h1><p class="gs-normal">5 минут на бриф. После него пришлём план, сроки и стоимость — без обязательств.</p></div></div></div></div></section><section class="gs-sec gs-sec--1" id="s-brief-form"><div class="gs-wrap"><div class="gs-row"><div class="gs-col" style="--span:8"><div class="gs-form">
+  <p class="gs-form__label vc-type-caption">Google Форма — встраивается через «Вставка → Формы»</p>
+  <img src="../images/form-header-ru.png" alt="" width="1600" height="400" loading="lazy">
+  <div class="gs-form__body">
+    <div class="gs-form__head"><p class="gs-form__title">Бриф — Vibecoding Company</p><p class="gs-normal">5 минут. После брифа пришлём план, сроки и стоимость.</p></div>
+    <div class="gs-form__q"><p class="gs-normal">Опишите задачу словами <span class="gs-form__star" aria-hidden="true">*</span></p><p class="gs-form__help">Как коллеге: что должно работать и для кого. Например: запись к мастеру с оплатой онлайн.</p><span class="gs-form__line gs-form__line--tall"></span></div><div class="gs-form__q"><p class="gs-normal">Что у вас уже есть?</p><ul class="gs-form__opts"><li><span class="gs-form__check"></span>Только идея</li><li><span class="gs-form__check"></span>Макеты или ТЗ</li><li><span class="gs-form__check"></span>Работающий продукт</li><li><span class="gs-form__check"></span>Код, который написала нейросеть</li></ul></div><div class="gs-form__q"><p class="gs-normal">Какой результат нужен? <span class="gs-form__star" aria-hidden="true">*</span></p><ul class="gs-form__opts"><li><span class="gs-form__radio"></span>Прототип или MVP</li><li><span class="gs-form__radio"></span>Инструмент для команды</li><li><span class="gs-form__radio"></span>ИИ-агенты или аудит кода</li><li><span class="gs-form__radio"></span>Дизайн продукта</li><li><span class="gs-form__radio"></span>Запуск и рост</li><li><span class="gs-form__radio"></span>Пока не знаю — поможете выбрать</li></ul></div><div class="gs-form__q"><p class="gs-normal">Когда нужен результат?</p><ul class="gs-form__opts"><li><span class="gs-form__radio"></span>На этой неделе</li><li><span class="gs-form__radio"></span>В течение месяца</li><li><span class="gs-form__radio"></span>Без спешки</li></ul></div><div class="gs-form__q"><p class="gs-normal">Компания и сайт</p><span class="gs-form__line"></span></div><div class="gs-form__q"><p class="gs-normal">Как к вам обращаться <span class="gs-form__star" aria-hidden="true">*</span></p><span class="gs-form__line"></span></div><div class="gs-form__q"><p class="gs-normal">Как с вами связаться <span class="gs-form__star" aria-hidden="true">*</span></p><p class="gs-form__help">Почта, Telegram или телефон.</p><span class="gs-form__line"></span></div><div class="gs-form__q"><p class="gs-normal">Согласие на обработку данных <span class="gs-form__star" aria-hidden="true">*</span></p><ul class="gs-form__opts"><li><span class="gs-form__check"></span>Соглашаюсь на обработку персональных данных по политике: <mark class="ph">[ссылка на политику]</mark></li></ul></div>
+    <span class="gs-form__submit vc-type-label">Отправить</span>
+  </div>
+</div></div><div class="gs-col" style="--span:4"><div class="gs-text"><h3 class="gs-subheading">Что будет дальше</h3><ol class="gs-normal gs-list"><li>Читаем бриф и отвечаем в течение рабочего дня.</li><li>Если нужно, созваниваемся на 30 минут.</li><li>Присылаем план, сроки и стоимость.</li></ol><p class="gs-small"><span class="tilde">~</span>/контакты</p><p class="gs-normal">Удобнее написать? Почта: <mark class="ph">[hello@ваш-домен.ru]</mark>, Telegram: <mark class="ph">[@ваш_ник]</mark>.</p></div><a class="gs-btn gs-btn--outlined vc-type-label" href="#/brief">Открыть форму</a></div></div></div></section></main>
+<footer class="gs-footer"><div class="gs-text"><p class="gs-normal"><strong>Vibecoding Company</strong> · От идеи до релиза — на одной волне</p><p class="gs-normal">Почта: <mark class="ph">[hello@ваш-домен.ru]</mark> · Telegram: <mark class="ph">[@ваш_ник]</mark></p><p class="gs-small"><mark class="ph">[ИП Фамилия И. О. / ООО «Название»]</mark>, ИНН <mark class="ph">[0000000000]</mark> · <a href="#/brief">Политика обработки данных</a></p><p class="gs-small gs-langs"><a href="../en/" hreflang="en" lang="en">English</a> · <a href="../az/" hreflang="az" lang="az">Azərbaycanca</a> · <a href="../cs/" hreflang="cs" lang="cs">Čeština</a> · <a href="../me/" hreflang="cnr" lang="cnr">Crnogorski</a> · <a href="../da/" hreflang="da" lang="da">Dansk</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../et/" hreflang="et" lang="et">Eesti</a> · <a href="../es/" hreflang="es" lang="es">Español</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../ga/" hreflang="ga" lang="ga">Gaeilge</a> · <a href="../hr/" hreflang="hr" lang="hr">Hrvatski</a> · <a href="../is/" hreflang="is" lang="is">Íslenska</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../lv/" hreflang="lv" lang="lv">Latviešu</a> · <a href="../lt/" hreflang="lt" lang="lt">Lietuvių</a> · <a href="../lb/" hreflang="lb" lang="lb">Lëtzebuergesch</a> · <a href="../hu/" hreflang="hu" lang="hu">Magyar</a> · <a href="../mt/" hreflang="mt" lang="mt">Malti</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../no/" hreflang="nb" lang="nb">Norsk</a> · <a href="../uz/" hreflang="uz" lang="uz">Oʻzbekcha</a> · <a href="../pl/" hreflang="pl" lang="pl">Polski</a> · <a href="../pt/" hreflang="pt" lang="pt">Português</a> · <a href="../ro/" hreflang="ro" lang="ro">Română</a> · <a href="../sq/" hreflang="sq" lang="sq">Shqip</a> · <a href="../sk/" hreflang="sk" lang="sk">Slovenčina</a> · <a href="../sl/" hreflang="sl" lang="sl">Slovenščina</a> · <a href="../fi/" hreflang="fi" lang="fi">Suomi</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../tr/" hreflang="tr" lang="tr">Türkçe</a> · <a href="../tk/" hreflang="tk" lang="tk">Türkmençe</a> · <a href="../el/" hreflang="el" lang="el">Ελληνικά</a> · <a href="../be/" hreflang="be" lang="be">Беларуская</a> · <a href="../bg/" hreflang="bg" lang="bg">Български</a> · <a href="../kk/" hreflang="kk" lang="kk">Қазақша</a> · <a href="../ky/" hreflang="ky" lang="ky">Кыргызча</a> · <a href="../mk/" hreflang="mk" lang="mk">Македонски</a> · <a href="../ru/" hreflang="ru" lang="ru" aria-current="true">Русский</a> · <a href="../tg/" hreflang="tg" lang="tg">Тоҷикӣ</a> · <a href="../uk/" hreflang="uk" lang="uk">Українська</a> · <a href="../hy/" hreflang="hy" lang="hy">Հայերեն</a> · <a href="../ka/" hreflang="ka" lang="ka">ქართული</a> · <a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a></p><p class="gs-small">© 2026 Vibecoding Company</p></div></footer>
+</div>
+</div>
+<script>(function(){
+var pages=[].slice.call(document.querySelectorAll('[data-page]'));
+var links=[].slice.call(document.querySelectorAll('.gs-links a'));
+var nav=document.querySelector('.gs-nav'),burger=document.querySelector('.gs-burger');
+function route(){
+  var parts=location.hash.replace(/^#\/?/,'').split('/');
+  var id=parts[0]||'home';
+  if(!pages.some(function(p){return p.dataset.page===id}))id='home';
+  pages.forEach(function(p){p.hidden=p.dataset.page!==id});
+  links.forEach(function(a){if(a.dataset.page===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  nav.removeAttribute('data-open');burger.setAttribute('aria-expanded','false');
+  var target=parts[1]&&document.getElementById('s-'+id+'-'+parts[1]);
+  if(target)target.scrollIntoView();else window.scrollTo(0,0);
+  var cur=links.filter(function(a){return a.dataset.page===id})[0];
+  document.title=(cur?cur.textContent:'')+' — Vibecoding Company';
+}
+addEventListener('hashchange',route);route();
+burger.addEventListener('click',function(){var open=!nav.hasAttribute('data-open');nav.toggleAttribute('data-open',open);burger.setAttribute('aria-expanded',String(open))});
+var stage=document.querySelector('.pv-stage'),seg=[].slice.call(document.querySelectorAll('.pv-seg button'));
+function setDevice(d,keep){stage.dataset.device=d;seg.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.device===d))});if(keep)try{localStorage.setItem('vc-preview-device',d)}catch(e){}}
+seg.forEach(function(b){b.addEventListener('click',function(){setDevice(b.dataset.device,true)})});
+// ?device=phone в адресе — для ссылок и снимков; выбор кнопкой запоминается в браузере.
+var forced=/[?&]device=(phone|desktop)/.exec(location.search);
+if(forced)setDevice(forced[1]);else try{var saved=localStorage.getItem('vc-preview-device');if(saved==='phone'||saved==='desktop')setDevice(saved)}catch(e){}
+// Смена языка — макет того же языка, та же страница.
+document.querySelector('.pv-lang').addEventListener('change',function(e){location.href='../'+e.target.value+'/'+location.search+location.hash});
+document.addEventListener('click',function(e){var a=e.target.closest('.gs-langs a');if(a){e.preventDefault();location.href=a.getAttribute('href')+location.search+location.hash}});
+})();</script>
+</body>
+</html>
